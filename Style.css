@@ -1,0 +1,704 @@
+
+/* variables declared here - these are the colors for our pages, as well as the font stacks and sizes. */
+
+:root {
+     --black: #171321;
+    --dkblue: #0d314b;
+    --plum: #4b0d49;
+    --hotmag: #ff17e4;
+    --magenta: #e310cb;
+    --aqua: #86fbfb;
+    --white: #f7f8fa;
+    --font-size: 1.3rem;
+    --mono: "Oxygen mono", monospace;
+    --sans: Oxygen, sans-serif;
+}
+
+/* border box model: https://css-tricks.com/box-sizing/ */
+html {
+    box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+.sec-dblue{
+    background-color: var(--dkblue);
+}
+
+body{
+
+    padding :0;
+    margin:0;
+    font-family: var(--sans);      
+    /* using user defined vraibles here  */
+    background-color: var(--black);
+    color:white;
+    font-size: var(--font-size);
+
+}
+
+/* margin in the vertical direction collapse (1+1 = 1) if two elements have the margin of 1em each then the 
+margin betweewn the elements is 1em, (2+1=2) , only in margin in vertical direction.  */
+
+h1,h2,h3{
+
+    margin:0;
+
+}
+
+
+a{
+    color:var(--magenta);
+}
+a:hover{
+color:var(--hotmag);
+text-decoration: none;
+}
+
+
+img{
+
+    width:100%;       
+
+    /* allow the imag to scale acording to the parent size  */
+}
+
+
+
+
+
+
+/* intro style */
+
+
+#intro{
+
+    padding: 4rem 1rem 10rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#intro p{
+   font-size: 1 rem;
+   line-height: 1.5;    /* line -height without unit gives size of line height relative to the size of text,
+                           while giving it a unit makes it absolute which can cause problem */
+}
+#intro .name{
+    font-family: var(--mono);
+}
+
+.name span{
+  font-family: var(--sans);
+  font-size: 4rem;
+  color:var(--aqua);
+  display:block;
+}
+
+/* display :block -> Displays an element as a block element (like <p>). It starts on a new line, and takes up the whole width
+   display :inline -> 
+   
+   learn display
+   */
+
+#intro h2{
+    font-size: 4rem;
+    font-weight: normal;
+}
+
+
+
+
+
+/* -----------about---------- */
+
+#about{
+    padding: 80px 0;
+    color: #ababab;
+}
+
+.row{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.about-col-1{
+    flex-basis: 35%;
+}
+
+.about-col-1 img{
+
+    width:100%;
+    border-radius: 15px;
+}
+
+
+.about-col-2{
+
+    flex-basis: 60%;
+    
+}
+
+.sub-title{
+
+    font-size: 60px;
+    font-weight: 600;
+    color:white;
+}
+
+
+.tab-titles{
+
+    display: flex;
+    margin:20px 0 40px;
+
+}
+
+
+.tab-links{
+    margin-right: 50px;
+    font-size: 30px;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+}
+
+
+.tab-links::after{
+
+    content:'';
+    width:0;
+    height: 3px;
+    background: #ff004f;
+    position: absolute;
+    left:0;
+    bottom: -8px;
+    transition: 0.5s;
+}
+
+
+.tab-links.active-link::after{
+
+    width: 50%;
+}
+
+.tab-contents ul li{
+
+list-style: none;
+margin: 10px 0;
+
+
+}
+
+.tab-contents ul li span{
+
+    color:#b54769;
+    font-size: 20px;
+}
+
+.tab-contents {
+
+    display: none;
+
+}
+
+.tab-contents.active-tab{
+
+    display: block;
+}
+
+#about a{
+
+    background-color: var(--magenta);
+    border-radius: 0.3rem;
+    padding: 0 4px 0 4px;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+
+
+/* contact me section  */
+
+#contact {
+
+    width:100%;
+    text-align:center;
+    margin:0 auto;
+    padding: 3rem 0;
+    background-color: var(--plum);
+    /*    border:2px solid white; */
+}
+
+#contact h2{
+
+    margin-top: 20px;
+    
+}
+
+#contact p:last-child{  /*Take last paragraph of contact section*/
+
+    margin-top: 3rem;
+}
+
+
+
+/* nav-bar */
+ 
+
+nav{
+
+    font-family: var(--mono);
+    font-size: 80%;
+    padding:1rem;
+}
+
+
+nav h1 a{
+
+    font-family: var(--sans);
+
+}
+
+nav ul{
+
+     list-style-type: none; /* turns off the bullet*/
+     padding:0;
+     margin:0;        /* by default have padding or margin in ol and ul*/
+    
+     display:flex;
+     flex-flow: row wrap;
+     justify-content: center;
+     align-items: center;
+     gap:3rem;
+}
+
+nav li:first-child{
+
+     flex-basis: 100%;  /*to make name in newline flex basis used for items of the flex box  flex:0 1 100%; */
+    text-align:center;
+}
+
+/* Attribute Selector
+ The [attribute="value"] selector is used to select elements with a specified attribute and value.
+The [attribute~="value"] selector is used to select elements with an attribute value containing a specified word.
+The [attribute*="value"] selector is used to select elements whose attribute value contains a specified value. */
+
+nav [class*="fa-"]{
+
+    font-size: 150%;
+    color: var(--aqua);
+}
+
+nav  h1 [class*="fa-"] {      /* make the symbol in  front of name same size as of the name*/
+
+    font-size:100%;
+    color: var(--aqua);      
+}
+
+/* different states of links */
+
+nav a{
+
+color:var(--white);
+ text-decoration: none; /*remove the underline */
+  display: block;  /* fill the clikable area whole area of the text is clickable */
+
+}
+
+nav a:hover,
+nav [class*="fa-"]:hover
+{
+
+    color:var(--magenta);
+}
+
+
+
+
+/* making resume link as button */
+
+
+.button{
+
+    background-color:var(--magenta);
+    padding :0.5rem;
+    border-radius: 5px;
+    color:var(--white);
+    font-family: var(--mono);
+    text-decoration: none;
+
+}
+
+
+.button:hover{
+
+    color:var(--white);
+    background-color: var(--hotmag);
+}
+
+
+/* making navbar responsive
+media Query */
+
+/* learn media query?? */
+
+@media (min-width:850px){
+
+nav{
+
+    max-width: 1200px;
+    margin:0 auto;
+
+}
+
+nav li:first-child{
+
+    flex-basis: auto;
+    text-align: left;
+    margin-right: auto;
+}
+
+}
+
+
+
+footer{
+
+    /* background-color: red; */
+    margin-top: 50px;
+    width:100%;
+    height:25%;
+    text-align: center;
+    
+    
+    
+}
+
+
+
+footer ul{
+
+     
+    list-style-type: none;
+    padding: 0;
+    margin:2rem 0;
+    display: flex ;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 3rem;
+    font-size: 3rem;
+    
+}
+
+
+
+/* adding lines betweeen section  */
+
+.gradient{
+    background: rgb(46,193,171);
+background: linear-gradient(98deg, 
+rgba(46,193,171,1) 0%, rgba(255,0,48,1) 100%);
+
+height:2px;
+}
+
+
+
+
+/* projects section  */
+
+
+
+#projects{
+
+    padding: 4rem 1rem;
+}
+
+#projects h2{
+
+    font-size: 2.5rem;
+    margin-bottom: calc(2.5rem * 1.5);
+}
+
+#projects h3{
+
+    color:var(--aqua);
+
+}
+
+#projects h4{
+
+    font-size: 1rem;
+    font-family: var(--mono);
+    margin:0;
+}
+
+
+.black-box{
+
+    background-color: var(--black);
+    padding: 1rem;
+    border-radius: 10px;
+    color:white;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+
+#projects ul{
+
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-flow:row wrap;
+    justify-content: flex-start;
+    gap:1rem;
+    font-size: 1rem;
+}
+
+
+#projects img{
+
+    margin:2rem 0rem 4rem 0;
+    border-left:1px solid var(--aqua);
+    border-top:1px solid var(--aqua);
+    padding: 1rem;
+    border-radius: 25px;
+}
+
+
+
+@media (min-width:850px){
+
+    article{
+
+        display: grid;
+        grid-template-columns: repeat(10,1fr);
+        gap:1rem;
+
+    }
+
+    #projects{
+
+        max-width: 1200px;
+        margin:0 auto;
+    }
+
+    #projects img{
+
+        grid-column: 1/6;  
+        grid-row:1/2; 
+
+        /* doing this to make that overlap effect 
+        grid puts elements in different lines so use row */
+
+    }
+
+    .text{
+
+        grid-column: 5/11;
+        grid-row:1/2;
+        order:2;
+        text-align: right;
+    }
+
+    #projects .reverse .text{
+
+        grid-column: 1/6;         
+        grid-row: 1/2;
+        order:1;
+        text-align: left;
+    }
+
+    #projects .reverse ul{
+
+        justify-content: flex-start;
+    }
+
+
+    #projects .reverse img{
+
+        grid-column: 5/11;
+        grid-row: 1/2;
+    }
+
+
+
+    #projects ul{
+        justify-content: flex-end;
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* learn flex box and grid layouts */
+
+
+
+
+
+
+
+
+
+
+/* css pseudo-elements 
+
+A CSS pseudo-element is used to style specified parts of an element
+
+syntax-
+
+selector::pseudo-element {
+  property: value;
+}
+
+
+where selector is the element on which we want to apply the style like p,h1,input;
+
+where pseudo-element is different key words with specific tasks;
+
+like
+
+::first-letter- this will apply all the given properties to the first letter.
+::first-line-
+::before - pseudo-element can be used to insert some content before the content of an element like text emoji ... .
+::after - put contect after the content of the element using content:"text";
+::marker - pseudo-element selects the markers of list items.
+::selection- pseudo-element matches the portion of an element that is selected by a user.
+
+
+
+
+
+Pseudo-classes  
+
+A pseudo-class is used to define a special state of an element.
+
+selector:pseudo-class {
+  property: value;
+}
+
+
+pseudo-class -
+
+:link - unvisited link
+:visited - visited link
+:hover - mouse over
+:active - A link becomes active when you click on it.
+
+
+:first-child - matches a specified element that is the first child of another element
+
+p i:first-child - first i elements in all p classes           
+
+
+p:first-child i    - Match all <i> elements in all first child <p> elements
+
+
+
+
+
+
+Attribute Selector
+
+
+An attribute selector in CSS is a way to target and style HTML elements based on the presence or value of their attributes.
+ It allows you to select elements not just by their type, ID, or class, but also
+ by the values of their attributes. There are several variations of attribute selectors, and here are some common ones:
+
+ element [attribute]  - selects the element with the attribute element is optional
+
+ [attribute="value"]
+
+[attribute~="value"]  attribute containing specific word
+
+[attribute*="value"]  selector is used to select elements whose attribute value contains a specified value.
+
+
+
+div : by default block
+spam,a : inline
+
+
+display : 
+
+none - not display that text
+block - take whole available width (new line) , custom width,height,padding,margin can be given
+inline - take the width of the content (same line) no custom width,height,margin() but custom padding is possible
+inline-block  -  behave as inline but can give custom properties
+
+
+display : flex ->
+
+
+flex container properties ->
+
+flex-direction : direction in which container wants to stack (define main axis by default horizontal(or row))
+flex-wrap   : nowrap -> (all objects in one line)  wrap -> (objects go to new line if necessary) , wrap-reverse  
+flex-flow   : direction wrap (is a shorthand property for setting both the flex-direction and flex-wrap properties)
+justify-content  : used to align flex items (align items along the main axis)
+align-items      : used to align flex items (align items along cross axis ) stretch by default
+align-content    :  (works when wrap is on , align items on cross axis )
+gap       : gives gap between the elements
+
+
+flex items properties ->
+
+order      -> can give custom order in which items appear (order:1)
+flex-grow  -> how much to grow with respect to other items (when extra space is available ) default is 0 
+flex-shrink-> property specifies how much a flex item will shrink relative to the rest of the flex items.() 0->item refuses to shrink
+flex-basis -> 
+flex       -> shorthand for (grow,shrink,basis) where 2,3 are optional
+align-self -> The align-self property specifies the alignment for the selected item inside the flexible container.(override the property given on the container)
+
+
+
+
+
+CSS grid
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+box-sizing ->
+
+box-sizing: border-box;  padding and margin are included in the size (adding margin or padding does not change the 
+                         size of box but shrink the content size)
+
+ by default :;content-box ; which adds the margin and padding and increases the size of the box
+ 
+ 
+
+*/
+
+
+
