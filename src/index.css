@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Tab underline animation – matches original ::after trick */
+.tab-link-underline {
+  position: relative;
+}
+.tab-link-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 3px;
+  background: #ff004f;
+  transition: width 0.4s ease;
+}
+.tab-link-underline.active::after {
+  width: 50%;
+}
+
+/* Gradient divider */
+.gradient-divider {
+  height: 2px;
+  background: linear-gradient(98deg, rgba(46,193,171,1) 0%, rgba(255,0,48,1) 100%);
+}
+
+/* Project description dark box */
+.black-box {
+  background-color: #171321;
+  border-radius: 10px;
+  padding: 1rem;
+  color: white;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Project image border styling – matches original exactly */
+.project-img {
+  margin: 2rem 0 4rem 0;
+  border-left: 1px solid #86fbfb;
+  border-top: 1px solid #86fbfb;
+  border-radius: 25px;
+  padding: 1rem;
+  width: 100%;
+}
