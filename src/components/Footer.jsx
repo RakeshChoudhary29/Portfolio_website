@@ -16,14 +16,14 @@ const socialLinks = [
   },
 ]
 
-export default function Footer() {
+export default function Footer({ subtitle }) {
   return (
     <footer className="bg-black text-center py-12 px-4 border-t border-white/10">
       <p className="text-offwhite font-sans text-lg font-semibold mb-1">
         Rakesh Choudhary
       </p>
       <p className="text-offwhite/40 font-mono text-sm mb-5">
-        Mathematics &amp; Scientific Computing | NIT Warangal
+        {subtitle}
       </p>
 
       <ul className="flex justify-center gap-8 list-none p-0 m-0 text-2xl mb-6">

@@ -1,3 +1,4 @@
+import { getPortfolioFromSearch, getPortfolioOptions } from './data/portfolios'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -8,22 +9,30 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 
 export default function App() {
+  const portfolio = getPortfolioFromSearch(
+    typeof window !== 'undefined' ? window.location.search : '',
+  )
+  const portfolioOptions = getPortfolioOptions()
+
   return (
     <div className="bg-black text-offwhite font-sans min-h-screen">
-      <Navbar />
-      <Hero />
+      <Navbar
+        portfolioOptions={portfolioOptions}
+        activePortfolioKey={portfolio.key}
+      />
+      <Hero data={portfolio.hero} />
       <div className="gradient-divider" />
-      <About />
+      <About data={portfolio.about} />
       <div className="gradient-divider" />
-      <Experience />
+      <Experience data={portfolio.experience} />
       <div className="gradient-divider" />
-      <Education />
+      <Education data={portfolio.education} />
       <div className="gradient-divider" />
       <div className="bg-dkblue">
-        <Projects />
+        <Projects data={portfolio.projects} />
       </div>
-      <Contact />
-      <Footer />
+      <Contact data={portfolio.contact} />
+      <Footer subtitle={portfolio.footerSubtitle} />
     </div>
   )
 }

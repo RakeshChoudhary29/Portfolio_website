@@ -26,17 +26,17 @@ const socialLinks = [
   },
 ]
 
-export default function Navbar() {
+export default function Navbar({ portfolioOptions, activePortfolioKey }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   const closeMenu = () => setMenuOpen(false)
+  const rootHref = activePortfolioKey === 'software' ? '?' : `?type=${activePortfolioKey}`
 
   return (
     <header className="font-mono text-sm sticky top-0 z-50 bg-black/95 backdrop-blur-sm border-b border-white/10">
       <nav className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
-        {/* Logo / Name */}
         <a
-          href="#intro"
+          href={`${rootHref}#intro`}
           onClick={closeMenu}
           className="text-offwhite hover:text-magenta transition-colors duration-200 flex items-center gap-2 font-sans text-xl font-bold no-underline"
         >
@@ -44,48 +44,62 @@ export default function Navbar() {
           Rakesh Choudhary
         </a>
 
-        {/* Desktop nav */}
-        <ul className="hidden xl:flex items-center gap-6 list-none m-0 p-0">
-          {navLinks.map((link) => (
-            <li key={link.href}>
+        <div className="hidden xl:flex items-center gap-6">
+          <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 p-1">
+            {portfolioOptions.map((option) => (
               <a
-                href={link.href}
-                className="text-offwhite hover:text-magenta transition-colors duration-200 no-underline whitespace-nowrap"
+                key={option.key}
+                href={option.href}
+                className={`rounded-full px-3 py-1.5 no-underline transition-colors duration-200 ${
+                  option.key === activePortfolioKey
+                    ? 'bg-aqua/12 text-aqua'
+                    : 'text-offwhite/65 hover:text-offwhite'
+                }`}
               >
-                {link.label}
+                {option.label}
+              </a>
+            ))}
+          </div>
+
+          <ul className="flex items-center gap-6 list-none m-0 p-0">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="text-offwhite hover:text-magenta transition-colors duration-200 no-underline whitespace-nowrap"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+
+            {socialLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={link.label}
+                  className="text-aqua hover:text-magenta transition-colors duration-200 text-xl"
+                >
+                  <i className={link.icon} aria-hidden="true" />
+                  <span className="sr-only">{link.label}</span>
+                </a>
+              </li>
+            ))}
+
+            <li>
+              <a
+                href="https://drive.google.com/uc?export=download&id=1nY9EfwwBUiw8LSBWmO3LOy5JJzKs7c1Z"
+                download
+                className="bg-magenta hover:bg-hotmag text-white font-mono px-4 py-2 rounded-md transition-colors duration-200 no-underline inline-block"
+              >
+                Resume
               </a>
             </li>
-          ))}
+          </ul>
+        </div>
 
-          {/* Social icons */}
-          {socialLinks.map((s) => (
-            <li key={s.href}>
-              <a
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={s.label}
-                className="text-aqua hover:text-magenta transition-colors duration-200 text-xl"
-              >
-                <i className={s.icon} aria-hidden="true" />
-                <span className="sr-only">{s.label}</span>
-              </a>
-            </li>
-          ))}
-
-          {/* Resume button */}
-          <li>
-            <a
-              href="https://drive.google.com/uc?export=download&id=1nY9EfwwBUiw8LSBWmO3LOy5JJzKs7c1Z"
-              download
-              className="bg-magenta hover:bg-hotmag text-white font-mono px-4 py-2 rounded-md transition-colors duration-200 no-underline inline-block"
-            >
-              Resume
-            </a>
-          </li>
-        </ul>
-
-        {/* Mobile hamburger */}
         <button
           id="mobile-menu-btn"
           className="xl:hidden text-aqua text-2xl focus:outline-none"
@@ -97,9 +111,25 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile drawer */}
       {menuOpen && (
         <div className="xl:hidden bg-dkblue px-6 pb-6 pt-2 border-t border-white/10">
+          <div className="flex flex-wrap gap-2 mb-5">
+            {portfolioOptions.map((option) => (
+              <a
+                key={option.key}
+                href={option.href}
+                className={`rounded-full px-3 py-2 no-underline transition-colors duration-200 ${
+                  option.key === activePortfolioKey
+                    ? 'bg-aqua/12 text-aqua border border-aqua/30'
+                    : 'bg-white/5 text-offwhite/65 border border-white/10 hover:text-offwhite'
+                }`}
+                onClick={closeMenu}
+              >
+                {option.label}
+              </a>
+            ))}
+          </div>
+
           <ul className="flex flex-col gap-5 list-none p-0 m-0">
             {navLinks.map((link) => (
               <li key={link.href}>
@@ -113,18 +143,18 @@ export default function Navbar() {
               </li>
             ))}
             <li className="flex gap-6 text-2xl pt-1">
-              {socialLinks.map((s) => (
+              {socialLinks.map((link) => (
                 <a
-                  key={s.href}
-                  href={s.href}
+                  key={link.href}
+                  href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={s.label}
+                  aria-label={link.label}
                   className="text-aqua hover:text-magenta transition-colors duration-200"
                   onClick={closeMenu}
                 >
-                  <i className={s.icon} aria-hidden="true" />
-                  <span className="sr-only">{s.label}</span>
+                  <i className={link.icon} aria-hidden="true" />
+                  <span className="sr-only">{link.label}</span>
                 </a>
               ))}
             </li>
