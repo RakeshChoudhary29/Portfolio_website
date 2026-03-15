@@ -18,11 +18,15 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-center py-10 px-4 border-t border-white/10">
-      <h2 className="text-offwhite text-xl font-bold mb-4">
-        Rakesh Choudhary &middot; Learner
-      </h2>
-      <ul className="flex justify-center gap-8 list-none p-0 m-0 text-3xl mb-4">
+    <footer className="bg-black text-center py-12 px-4 border-t border-white/10">
+      <p className="text-offwhite font-sans text-lg font-semibold mb-1">
+        Rakesh Choudhary
+      </p>
+      <p className="text-offwhite/40 font-mono text-sm mb-5">
+        Mathematics &amp; Scientific Computing · NIT Warangal
+      </p>
+
+      <ul className="flex justify-center gap-8 list-none p-0 m-0 text-2xl mb-6">
         {socialLinks.map((s) => (
           <li key={s.href}>
             <a
@@ -30,7 +34,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={s.label}
-              className="text-aqua hover:text-magenta transition-colors duration-200"
+              className="text-offwhite/50 hover:text-aqua transition-colors duration-200"
             >
               <i className={s.icon} aria-hidden="true" />
               <span className="sr-only">{s.label}</span>
@@ -38,8 +42,12 @@ export default function Footer() {
           </li>
         ))}
       </ul>
-      <p className="text-offwhite/50 text-sm">
-        &copy; {new Date().getFullYear()} Rakesh Choudhary. All Rights Reserved.
+
+      <p className="text-offwhite/30 font-mono text-xs tracking-wide">
+        Designed &amp; Built by{' '}
+        <span className="text-aqua/60">Rakesh Choudhary</span>
+        {' '}·{' '}
+        &copy; {new Date().getFullYear()}
       </p>
     </footer>
   )

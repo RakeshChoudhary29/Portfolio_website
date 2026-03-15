@@ -12,6 +12,7 @@ export default function App() {
       <Hero />
       <div className="gradient-divider" />
       <About />
+      <div className="gradient-divider" />
       <div className="bg-dkblue">
         <Projects />
       </div>

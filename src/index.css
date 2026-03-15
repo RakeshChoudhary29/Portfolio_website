@@ -2,7 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Screen reader only utility */
+/* ─────────────────────────────────────────────
+   Global base
+───────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection color */
+::selection {
+  background-color: #e310cb40;
+  color: #fff;
+}
+
+/* ─────────────────────────────────────────────
+   Accessibility
+───────────────────────────────────────────── */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -15,12 +41,9 @@
   border-width: 0;
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Tab underline animation – matches original ::after trick */
+/* ─────────────────────────────────────────────
+   Tab underline animation
+───────────────────────────────────────────── */
 .tab-link-underline {
   position: relative;
 }
@@ -38,28 +61,78 @@ html {
   width: 50%;
 }
 
-/* Gradient divider */
+/* ─────────────────────────────────────────────
+   Gradient divider
+───────────────────────────────────────────── */
 .gradient-divider {
   height: 2px;
-  background: linear-gradient(98deg, rgba(46,193,171,1) 0%, rgba(255,0,48,1) 100%);
+  background: linear-gradient(98deg, rgba(46, 193, 171, 1) 0%, rgba(255, 0, 48, 1) 100%);
 }
 
-/* Project description dark box */
+/* ─────────────────────────────────────────────
+   Project description dark box
+───────────────────────────────────────────── */
 .black-box {
   background-color: #171321;
   border-radius: 10px;
-  padding: 1rem;
-  color: white;
+  padding: 1.5rem;
+  color: rgba(255, 255, 255, 0.88);
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1.7;
 }
 
-/* Project image border styling – matches original exactly */
+/* ─────────────────────────────────────────────
+   Project image border styling
+───────────────────────────────────────────── */
 .project-img {
-  margin: 2rem 0 4rem 0;
+  margin: 0;
   border-left: 1px solid #86fbfb;
   border-top: 1px solid #86fbfb;
   border-radius: 25px;
   padding: 1rem;
   width: 100%;
+  transition: border-color 0.3s ease, transform 0.4s ease;
+}
+
+/* ─────────────────────────────────────────────
+   Fade-in-up animation (Hero)
+───────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s ease both;
+}
+.animation-delay-200 { animation-delay: 0.2s; }
+.animation-delay-400 { animation-delay: 0.4s; }
+.animation-delay-600 { animation-delay: 0.6s; }
+.animation-delay-800 { animation-delay: 0.8s; }
+
+/* ─────────────────────────────────────────────
+   Numbered section label (e.g., 01. Projects)
+───────────────────────────────────────────── */
+.section-label {
+  font-family: 'Oxygen Mono', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #86fbfb;
+  margin-bottom: 0.4rem;
+}
+
+/* ─────────────────────────────────────────────
+   Subtle grid background texture (Hero)
+───────────────────────────────────────────── */
+.hero-bg {
+  background-image:
+    radial-gradient(ellipse 80% 60% at 60% 40%, rgba(134, 251, 251, 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 20% 80%, rgba(227, 16, 203, 0.05) 0%, transparent 60%);
 }
