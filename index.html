@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting...</title>
+    <script>
+      // Destination URL variable for easy maintenance
+      const DESTINATION_URL = 'https://rakeshchoudhary.dev';
+
+      // Meta refresh fallback
+      const meta = document.createElement('meta');
+      meta.httpEquiv = 'refresh';
+      meta.content = `0; url=${DESTINATION_URL}`;
+      document.getElementsByTagName('head')[0].appendChild(meta);
+
+      // JavaScript redirect
+      window.location.replace(DESTINATION_URL);
+    </script>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #171321;
+        color: #f7f8fa;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        text-align: center;
+      }
+
+      .loader {
+        border: 4px solid #2a2438;
+        border-top: 4px solid #86fbfb;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        margin-bottom: 20px;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      a {
+        color: #86fbfb;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.2s;
+      }
+
+      a:hover {
+        border-color: #86fbfb;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loader"></div>
+    <p>Redirecting you to <a href="https://rakeshchoudhary.dev">rakeshchoudhary.dev</a></p>
+    <p><small>If you are not redirected automatically, please click the link above.</small></p>
+  </body>
+</html>
