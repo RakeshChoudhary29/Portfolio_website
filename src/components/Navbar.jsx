@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { getResumeUrl } from '../constants/site'
 
 const navLinks = [
   { label: 'About', href: '#about' },
@@ -31,6 +32,7 @@ export default function Navbar({ activePortfolioKey }) {
 
   const closeMenu = () => setMenuOpen(false)
   const rootHref = activePortfolioKey === 'software' ? '?type=software' : `?type=${activePortfolioKey}`
+  const resumeUrl = getResumeUrl(activePortfolioKey)
 
   return (
     <header className="font-mono text-sm sticky top-0 z-50 bg-black/95 backdrop-blur-sm border-b border-white/10">
@@ -74,8 +76,9 @@ export default function Navbar({ activePortfolioKey }) {
 
             <li>
               <a
-                href="https://drive.google.com/uc?export=download&id=1nY9EfwwBUiw8LSBWmO3LOy5JJzKs7c1Z"
-                download
+                href={resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-magenta hover:bg-hotmag text-white font-mono px-4 py-2 rounded-md transition-colors duration-200 no-underline inline-block"
               >
                 Resume
@@ -127,8 +130,9 @@ export default function Navbar({ activePortfolioKey }) {
             </li>
             <li>
               <a
-                href="https://drive.google.com/uc?export=download&id=1nY9EfwwBUiw8LSBWmO3LOy5JJzKs7c1Z"
-                download
+                href={resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-magenta hover:bg-hotmag text-white font-mono px-4 py-2 rounded-md transition-colors duration-200 inline-block no-underline"
                 onClick={closeMenu}
               >
