@@ -1,4 +1,5 @@
-import { getPortfolioFromSearch, getPortfolioOptions } from './data/portfolios'
+import { useEffect } from 'react'
+import { getPortfolioFromSearch, getProjectFromSearch, buildMetadata } from './data/portfolios'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -7,28 +8,35 @@ import Education from './components/Education'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import Seo from './components/Seo'
 
 export default function App() {
-  const portfolio = getPortfolioFromSearch(
-    typeof window !== 'undefined' ? window.location.search : '',
-  )
+  const search = typeof window !== 'undefined' ? window.location.search : ''
+  const portfolio = getPortfolioFromSearch(search)
+  const project = getProjectFromSearch(search, portfolio)
+
+  const metadata = buildMetadata(portfolio, project)
+
   return (
     <div className="bg-black text-offwhite font-sans min-h-screen">
+      <Seo metadata={metadata} />
       <Navbar
         activePortfolioKey={portfolio.key}
       />
-      <Hero data={portfolio.hero} />
-      <div className="gradient-divider" />
-      <About data={portfolio.about} />
-      <div className="gradient-divider" />
-      <Experience data={portfolio.experience} />
-      <div className="gradient-divider" />
-      <Education data={portfolio.education} />
-      <div className="gradient-divider" />
-      <div className="bg-dkblue">
-        <Projects data={portfolio.projects} />
-      </div>
-      <Contact data={portfolio.contact} />
+      <main>
+        <Hero data={portfolio.hero} />
+        <div className="gradient-divider" />
+        <About data={portfolio.about} />
+        <div className="gradient-divider" />
+        <Experience data={portfolio.experience} />
+        <div className="gradient-divider" />
+        <Education data={portfolio.education} />
+        <div className="gradient-divider" />
+        <div className="bg-dkblue">
+          <Projects data={portfolio.projects} portfolioKey={portfolio.key} />
+        </div>
+        <Contact data={portfolio.contact} />
+      </main>
       <Footer subtitle={portfolio.footerSubtitle} />
     </div>
   )

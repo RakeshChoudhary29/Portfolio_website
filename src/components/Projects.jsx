@@ -20,6 +20,8 @@ function ProjectVisual({ project }) {
           src={project.image}
           alt={project.imageAlt}
           className="w-full rounded-[1.1rem] object-cover aspect-[16/10]"
+          loading="lazy"
+          decoding="async"
         />
       </div>
     )
@@ -38,9 +40,18 @@ function ProjectVisual({ project }) {
   )
 }
 
-function ProjectCard({ project }) {
+function ProjectCard({ project, portfolioKey }) {
   const contentOrder = project.reverse ? 'lg:order-1' : 'lg:order-2'
   const imageOrder = project.reverse ? 'lg:order-2' : 'lg:order-1'
+  const params = new URLSearchParams()
+
+  if (portfolioKey !== 'software') {
+    params.set('type', portfolioKey)
+  }
+
+  params.set('project', project.id)
+
+  const projectHref = `/?${params.toString()}`
 
   return (
     <article className="grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-12 lg:items-center">
@@ -51,7 +62,9 @@ function ProjectCard({ project }) {
       <div className={`${contentOrder} text-left`}>
         <p className="font-mono text-sm text-aqua/80 mb-2 tracking-widest uppercase">{project.label}</p>
         <h3 className="text-aqua text-2xl md:text-3xl font-bold mb-5 leading-snug">
-          {project.title}
+          <a href={projectHref} className="text-aqua no-underline hover:text-magenta transition-colors duration-200">
+            {project.title}
+          </a>
         </h3>
 
         <div className="black-box border border-white/8 shadow-2xl">
@@ -81,7 +94,7 @@ function ProjectCard({ project }) {
   )
 }
 
-export default function Projects({ data }) {
+export default function Projects({ data, portfolioKey }) {
   return (
     <section id="projects" className="max-w-6xl mx-auto px-4 sm:px-6 py-24">
       <div className="max-w-2xl mb-14 md:mb-16">
@@ -100,7 +113,7 @@ export default function Projects({ data }) {
             key={project.id}
             className={index === 0 ? '' : 'border-t border-white/10 pt-16 md:pt-20'}
           >
-            <ProjectCard project={project} />
+            <ProjectCard project={project} portfolioKey={portfolioKey} />
           </div>
         ))}
       </div>

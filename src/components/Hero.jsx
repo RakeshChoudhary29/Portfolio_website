@@ -59,6 +59,7 @@ export default function Hero({ data }) {
                 src={data.card.logo}
                 alt={data.card.logoAlt}
                 className="max-h-full max-w-full object-contain"
+                fetchpriority="high"
               />
             </div>
             <div>

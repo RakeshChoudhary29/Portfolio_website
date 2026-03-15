@@ -3,6 +3,11 @@ import duLogo from '../assets/du-logo.png'
 import ticketImg from '../assets/Ticket3.jpg'
 import shortestPathImg from '../assets/ShortestPath.png'
 import titanicImg from '../assets/Titanic3.jpg'
+import {
+  DEFAULT_KEYWORDS,
+  DEFAULT_OG_IMAGE,
+  SITE_URL,
+} from '../constants/site'
 
 const sharedEducation = {
   sectionLabel: 'Education',
@@ -66,14 +71,28 @@ export const portfolioRegistry = {
     label: 'Software Developer',
     shortLabel: 'Software',
     queryValue: 'software',
+    seo: {
+      title: 'Rakesh Choudhary | Software Engineer & Full Stack Developer',
+      description:
+        'Explore the software engineering portfolio of Rakesh Choudhary, featuring React, Next.js, Node.js, MERN stack, cloud deployment, and scalable web application projects.',
+      keywords: [
+        ...DEFAULT_KEYWORDS,
+        'software engineer',
+        'full stack engineer',
+        'React portfolio',
+        'Next.js portfolio',
+        'Node.js portfolio',
+      ],
+      jobTitle: 'Software Engineer',
+    },
     footerSubtitle: 'Software Developer | NIT Warangal',
     hero: {
       sectionLabel: 'Introduction',
       intro: 'Hi, my name is',
       name: 'Rakesh Choudhary',
-      title: 'Full Stack Developer crafting scalable and clean web experiences.',
+      title: 'Full Stack Developer & Software Engineer crafting scalable web experiences.',
       description:
-        'I work with React, Next.js, Node.js, and MongoDB to build responsive, user-focused applications with strong performance and practical UI.',
+        'I am a Software Engineer and Full Stack Developer working with React, Next.js, Node.js, and MongoDB to build responsive, user-focused applications with strong performance and practical UI.',
       chips: ['1+ year experience', 'MERN Stack', 'Google Cloud Platform'],
       card: {
         logo: nitwLogo,
@@ -92,7 +111,7 @@ export const portfolioRegistry = {
       sectionLabel: 'About',
       title: 'About Me',
       description:
-        'I am Rakesh Choudhary, a full stack developer with experience building scalable web applications using the MERN stack, Next.js, and Google Cloud Platform. I enjoy combining strong problem-solving skills with clean, responsive interfaces and practical product thinking.',
+        'I am Rakesh Choudhary, a Software Engineer and Full Stack Developer with experience building scalable web applications using the MERN stack, Next.js, and Google Cloud Platform. I enjoy combining strong problem-solving skills with clean, responsive interfaces and practical product thinking.',
       snapshotTitle: 'Quick Snapshot',
       snapshotItems: [
         'Frontend-focused full stack developer',
@@ -182,7 +201,7 @@ export const portfolioRegistry = {
           ],
           techs: ['C++', 'File Handling', 'OOP'],
           image: ticketImg,
-          imageAlt: 'Movie Ticket Booking System screenshot',
+          imageAlt: 'Rakesh Choudhary Software Engineer - Movie Ticket Booking System UI',
           reverse: true,
         },
         {
@@ -205,7 +224,7 @@ export const portfolioRegistry = {
           ],
           techs: ['HTML', 'CSS', 'JavaScript'],
           image: shortestPathImg,
-          imageAlt: 'Shortest Path visualizer screenshot',
+          imageAlt: 'Rakesh Choudhary Software Engineer - Shortest Path Visualizer Tool',
           reverse: false,
         },
       ],
@@ -213,7 +232,7 @@ export const portfolioRegistry = {
     contact: {
       ...sharedContact,
       description:
-        "I'm always interested in hearing about software roles, product engineering opportunities, and meaningful collaborations.",
+        "I'm always interested in software roles, product engineering opportunities, and meaningful collaborations.",
     },
   },
   aiml: {
@@ -221,6 +240,20 @@ export const portfolioRegistry = {
     label: 'AI/ML & Data Engineer',
     shortLabel: 'AI / ML',
     queryValue: 'aiml',
+    seo: {
+      title: 'Rakesh Choudhary | AI ML and Data Engineering Portfolio',
+      description:
+        'Discover the AI, machine learning, analytics, and data engineering portfolio of Rakesh Choudhary, with projects in Python, SQL, data pipelines, dashboards, and applied analysis.',
+      keywords: [
+        ...DEFAULT_KEYWORDS,
+        'AI engineer portfolio',
+        'machine learning portfolio',
+        'data engineer portfolio',
+        'Python developer portfolio',
+        'SQL engineer portfolio',
+      ],
+      jobTitle: 'AI ML and Data Engineer',
+    },
     footerSubtitle: 'AI/ML and Data Engineering Portfolio',
     hero: {
       sectionLabel: 'Introduction',
@@ -326,7 +359,7 @@ export const portfolioRegistry = {
           ],
           techs: ['Python', 'Pandas', 'Visualization', 'Statistics'],
           image: titanicImg,
-          imageAlt: 'Titanic survival analysis screenshot',
+          imageAlt: 'Rakesh Choudhary Data Engineer - Titanic Survival Analysis Project',
           reverse: false,
         },
         {
@@ -387,4 +420,59 @@ export function getPortfolioOptions() {
     label: portfolio.shortLabel,
     href: `?type=${portfolio.queryValue}`,
   }))
+}
+
+export function getProjectFromSearch(search, portfolio) {
+  const params = new URLSearchParams(search)
+  const projectId = params.get('project')
+
+  if (!projectId) {
+    return null
+  }
+
+  return portfolio.projects.items.find((project) => project.id === projectId) || null
+}
+
+export function getPortfolioUrl(portfolioKey) {
+  if (portfolioKey === 'software') {
+    return `${SITE_URL}/`
+  }
+
+  return `${SITE_URL}/?type=${portfolioKey}`
+}
+
+export function getProjectUrl(portfolioKey, projectId) {
+  const params = new URLSearchParams()
+
+  if (portfolioKey !== 'software') {
+    params.set('type', portfolioKey)
+  }
+
+  params.set('project', projectId)
+
+  return `${SITE_URL}/?${params.toString()}`
+}
+
+export function buildMetadata(portfolio, project) {
+  if (project) {
+    return {
+      title: `${project.title} | Rakesh Choudhary Portfolio`,
+      description: project.description,
+      canonicalUrl: getProjectUrl(portfolio.key, project.id),
+      websiteUrl: `${SITE_URL}/`,
+      image: DEFAULT_OG_IMAGE,
+      keywords: [...portfolio.seo.keywords, project.title, ...project.techs],
+      jobTitle: portfolio.seo.jobTitle,
+    }
+  }
+
+  return {
+    title: portfolio.seo.title,
+    description: portfolio.seo.description,
+    canonicalUrl: getPortfolioUrl(portfolio.key),
+    websiteUrl: `${SITE_URL}/`,
+    image: DEFAULT_OG_IMAGE,
+    keywords: portfolio.seo.keywords,
+    jobTitle: portfolio.seo.jobTitle,
+  }
 }

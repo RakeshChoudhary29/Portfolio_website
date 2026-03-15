@@ -24,6 +24,7 @@ export default function Education({ data }) {
                     src={item.logo}
                     alt={item.logoAlt}
                     className="max-h-full max-w-full object-contain"
+                    loading="lazy"
                   />
                 </div>
 

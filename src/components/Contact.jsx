@@ -22,7 +22,7 @@ export default function Contact({ data }) {
               Email Me
             </a>
             <a
-              href="https://www.linkedin.com/in/rakesh-choudhary-035235233"
+              href="https://www.linkedin.com/in/rakeshchoudhary29/"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-offwhite/10 border-2 border-offwhite/20 text-offwhite hover:bg-offwhite hover:text-plum font-mono px-8 py-3.5 rounded-md transition-all duration-300 inline-flex items-center no-underline text-base tracking-wide"

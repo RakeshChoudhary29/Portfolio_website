@@ -1,6 +1,6 @@
 const socialLinks = [
   {
-    href: 'https://www.linkedin.com/in/rakesh-choudhary-035235233',
+    href: 'https://www.linkedin.com/in/rakeshchoudhary29/',
     icon: 'fa-brands fa-linkedin',
     label: 'LinkedIn',
   },

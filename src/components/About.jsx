@@ -17,6 +17,7 @@ export default function About({ data }) {
                 src={profilePhoto}
                 alt="Rakesh Choudhary"
                 className="w-full rounded-[1.5rem] object-cover relative z-10 transition-transform duration-500 group-hover:scale-[1.02] shadow-2xl"
+                loading="lazy"
               />
               <div className="absolute inset-0 border-2 border-aqua/30 rounded-[1.5rem] translate-x-3 translate-y-3 z-0 group-hover:translate-x-4 group-hover:translate-y-4 transition-transform duration-500" />
             </div>
