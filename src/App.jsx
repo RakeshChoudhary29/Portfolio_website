@@ -12,12 +12,9 @@ export default function App() {
   const portfolio = getPortfolioFromSearch(
     typeof window !== 'undefined' ? window.location.search : '',
   )
-  const portfolioOptions = getPortfolioOptions()
-
   return (
     <div className="bg-black text-offwhite font-sans min-h-screen">
       <Navbar
-        portfolioOptions={portfolioOptions}
         activePortfolioKey={portfolio.key}
       />
       <Hero data={portfolio.hero} />

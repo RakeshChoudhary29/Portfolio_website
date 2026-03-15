@@ -385,6 +385,6 @@ export function getPortfolioOptions() {
   return Object.values(portfolioRegistry).map((portfolio) => ({
     key: portfolio.key,
     label: portfolio.shortLabel,
-    href: portfolio.key === 'software' ? '?' : `?type=${portfolio.queryValue}`,
+    href: `?type=${portfolio.queryValue}`,
   }))
 }

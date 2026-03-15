@@ -26,11 +26,11 @@ const socialLinks = [
   },
 ]
 
-export default function Navbar({ portfolioOptions, activePortfolioKey }) {
+export default function Navbar({ activePortfolioKey }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   const closeMenu = () => setMenuOpen(false)
-  const rootHref = activePortfolioKey === 'software' ? '?' : `?type=${activePortfolioKey}`
+  const rootHref = activePortfolioKey === 'software' ? '?type=software' : `?type=${activePortfolioKey}`
 
   return (
     <header className="font-mono text-sm sticky top-0 z-50 bg-black/95 backdrop-blur-sm border-b border-white/10">
@@ -45,22 +45,6 @@ export default function Navbar({ portfolioOptions, activePortfolioKey }) {
         </a>
 
         <div className="hidden xl:flex items-center gap-6">
-          <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 p-1">
-            {portfolioOptions.map((option) => (
-              <a
-                key={option.key}
-                href={option.href}
-                className={`rounded-full px-3 py-1.5 no-underline transition-colors duration-200 ${
-                  option.key === activePortfolioKey
-                    ? 'bg-aqua/12 text-aqua'
-                    : 'text-offwhite/65 hover:text-offwhite'
-                }`}
-              >
-                {option.label}
-              </a>
-            ))}
-          </div>
-
           <ul className="flex items-center gap-6 list-none m-0 p-0">
             {navLinks.map((link) => (
               <li key={link.href}>
@@ -113,23 +97,6 @@ export default function Navbar({ portfolioOptions, activePortfolioKey }) {
 
       {menuOpen && (
         <div className="xl:hidden bg-dkblue px-6 pb-6 pt-2 border-t border-white/10">
-          <div className="flex flex-wrap gap-2 mb-5">
-            {portfolioOptions.map((option) => (
-              <a
-                key={option.key}
-                href={option.href}
-                className={`rounded-full px-3 py-2 no-underline transition-colors duration-200 ${
-                  option.key === activePortfolioKey
-                    ? 'bg-aqua/12 text-aqua border border-aqua/30'
-                    : 'bg-white/5 text-offwhite/65 border border-white/10 hover:text-offwhite'
-                }`}
-                onClick={closeMenu}
-              >
-                {option.label}
-              </a>
-            ))}
-          </div>
-
           <ul className="flex flex-col gap-5 list-none p-0 m-0">
             {navLinks.map((link) => (
               <li key={link.href}>
