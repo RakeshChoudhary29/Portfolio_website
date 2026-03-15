@@ -161,7 +161,7 @@ export const portfolioRegistry = {
           label: 'Featured Project',
           title: 'RolDrive Admin Platform',
           description:
-            'Admin platform for ride operations, live tracking, assignment workflows, and business analytics.',
+            'Built an internal admin platform to manage ride operations end to end, including live trip visibility, chauffeur and vehicle assignment workflows, and operations monitoring. The system was designed to help business teams make faster decisions through clearer status tracking, streamlined actions, and analytics-focused dashboards.',
           links: [],
           techs: ['React', 'Node.js', 'Socket.io', 'MongoDB'],
           placeholder: 'RD',
@@ -172,7 +172,7 @@ export const portfolioRegistry = {
           label: 'Featured Project',
           title: 'Movie Ticket Booking System',
           description:
-            'Ticket booking system with real-time seat availability and booking management.',
+            'Developed a movie ticket booking system focused on seat selection, booking flow management, and availability tracking. The project emphasizes object-oriented design, structured file handling, and reliable booking logic for handling theatre data, schedules, and reservation updates in a desktop-style application flow.',
           links: [
             {
               url: 'https://github.com/RakeshChoudhary29/Movie-Ticket-Booking-System',
@@ -190,7 +190,7 @@ export const portfolioRegistry = {
           label: 'Featured Project',
           title: 'Shortest Path Visualizer',
           description:
-            "Interactive Dijkstra visualizer with dynamic graph editing and real-time path calculation.",
+            'Created an interactive graph visualizer to demonstrate Dijkstra shortest path computation with dynamic node and edge editing. The tool helps users understand how pathfinding works step by step through a hands-on interface, real-time recalculation, and visual feedback for graph changes and computed routes.',
           links: [
             {
               url: 'https://github.com/RakeshChoudhary29/Shortest-Path',
@@ -316,7 +316,7 @@ export const portfolioRegistry = {
           label: 'Data Project',
           title: 'Titanic Survival Analysis',
           description:
-            'Data analysis project exploring survival patterns through visualizations, segmentation, and feature-based insights.',
+            'Performed exploratory data analysis on the Titanic dataset to identify survival trends across passenger demographics, ticket class, and travel patterns. The project focuses on cleaning data, comparing features, and using visual analysis to uncover interpretable insights that explain how different variables influenced survival outcomes.',
           links: [
             {
               url: 'https://github.com/RakeshChoudhary29/Titanic',
@@ -334,7 +334,7 @@ export const portfolioRegistry = {
           label: 'Applied Work',
           title: 'Real-Time Analytics Dashboard',
           description:
-            'Dashboarding work for tracking performance metrics, operational analytics, and reporting visibility.',
+            'Worked on dashboard experiences that surface operational KPIs, performance metrics, and reporting insights in a clear and actionable format. The goal was to improve decision-making for internal teams through better visibility, structured filters, and near real-time updates across business and operational views.',
           links: [],
           techs: ['Analytics', 'Dashboards', 'RBAC', 'Reporting'],
           placeholder: 'BI',
@@ -345,7 +345,7 @@ export const portfolioRegistry = {
           label: 'Applied Work',
           title: 'Data Pipeline and Query Optimization',
           description:
-            'Performance-oriented workflows using aggregation pipelines, indexing, caching, and cloud-backed data design.',
+            'Improved backend data workflows by optimizing queries, designing aggregation pipelines, and reducing response times through indexing and caching strategies. This work focused on making data-heavy applications more scalable and reliable while supporting reporting needs, cloud-backed deployments, and efficient access patterns.',
           links: [],
           techs: ['MongoDB', 'Redis', 'GCP', 'Optimization'],
           placeholder: 'DE',
