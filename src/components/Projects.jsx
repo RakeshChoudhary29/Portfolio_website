@@ -8,7 +8,7 @@ const projects = [
     label: 'Featured Project',
     title: 'Movie Ticket Booking System',
     description:
-      'A comprehensive movie ticket booking system that facilitates seamless purchase of tickets and efficient management of booking details. Features real-time seat availability — sold seats highlighted in red, available in green — for an intuitive user experience.',
+      'A comprehensive movie ticket booking system that facilitates seamless purchase of tickets and efficient management of booking details. Features real-time seat availability with sold seats highlighted in red and available seats in green.',
     links: [
       {
         url: 'https://github.com/RakeshChoudhary29/Movie-Ticket-Booking-System',
@@ -49,7 +49,7 @@ const projects = [
     label: 'Featured Project',
     title: 'Titanic Survival Analysis',
     description:
-      'A data analysis system that uncovers the factors influencing Titanic passenger survival. Features intuitive visualizations — survivors highlighted in green, non-survivors in red — enabling clear pattern exploration from the dataset.',
+      'A data analysis system that uncovers the factors influencing Titanic passenger survival. It uses intuitive visualizations to make pattern exploration in the dataset easier to understand.',
     links: [
       {
         url: 'https://github.com/RakeshChoudhary29/Titanic',
@@ -82,15 +82,17 @@ function ProjectCard({ project }) {
   const { label, title, description, links, techs, image, imageAlt, reverse } = project
 
   const textBlock = (
-    <div className={`row-start-1 z-10 pointer-events-none ${reverse ? 'col-start-1 col-end-7 text-left' : 'col-start-5 col-end-11 text-right'}`}>
-      <div className="pointer-events-auto">
-        <p className="font-mono text-sm text-aqua/80 mb-1 tracking-widest uppercase">{label}</p>
-        <h3 className="text-aqua text-3xl font-bold mb-6 leading-snug">{title}</h3>
+    <div
+      className={`row-start-1 z-10 ${
+        reverse ? 'col-span-5 col-start-1 text-left' : 'col-span-5 col-start-8 text-right'
+      }`}
+    >
+      <div className="rounded-xl">
+        <p className="font-mono text-sm text-aqua/80 mb-2 tracking-widest uppercase">{label}</p>
+        <h3 className="text-aqua text-3xl font-bold mb-5 leading-snug">{title}</h3>
 
         <div className="black-box shadow-2xl border border-white/5 hover:border-aqua/20 transition-colors duration-300">
-          <p className="text-base text-offwhite/85 leading-relaxed">
-            {description}
-          </p>
+          <p className="text-base text-offwhite/85 leading-relaxed">{description}</p>
           <div className={`flex gap-4 mt-5 flex-wrap ${reverse ? 'justify-start' : 'justify-end'}`}>
             {links.map((link) => (
               <LinkButton key={link.url} link={link} />
@@ -98,10 +100,16 @@ function ProjectCard({ project }) {
           </div>
         </div>
 
-        <div className="mt-6">
-          <ul className={`flex flex-wrap gap-x-6 gap-y-2 list-none p-0 m-0 font-mono text-sm text-offwhite/60 ${reverse ? 'justify-start' : 'justify-end'}`}>
-            {techs.map((t) => (
-              <li key={t} className="hover:text-aqua transition-colors cursor-default">{t}</li>
+        <div className="mt-5">
+          <ul
+            className={`flex flex-wrap gap-x-6 gap-y-2 list-none p-0 m-0 font-mono text-sm text-offwhite/60 ${
+              reverse ? 'justify-start' : 'justify-end'
+            }`}
+          >
+            {techs.map((tech) => (
+              <li key={tech} className="hover:text-aqua transition-colors cursor-default">
+                {tech}
+              </li>
             ))}
           </ul>
         </div>
@@ -110,18 +118,21 @@ function ProjectCard({ project }) {
   )
 
   const imageBlock = (
-    <div className={`row-start-1 group cursor-pointer transition-transform duration-500 hover:scale-[1.01] ${reverse ? 'col-start-5 col-end-11' : 'col-start-1 col-end-7'}`}>
+    <div
+      className={`row-start-1 ${
+        reverse ? 'col-span-7 col-start-6' : 'col-span-7 col-start-1'
+      }`}
+    >
       <img
         src={image}
         alt={imageAlt}
-        className="project-img shadow-2xl group-hover:border-magenta/60"
+        className="project-img shadow-2xl hover:border-magenta/60 transition-colors duration-300"
       />
     </div>
   )
 
   return (
-    <article>
-      {/* ── Mobile layout ── */}
+    <article className="relative">
       <div className="md:hidden flex flex-col gap-6">
         <div>
           <p className="font-mono text-xs text-aqua/80 mb-1 tracking-widest uppercase">{label}</p>
@@ -137,14 +148,13 @@ function ProjectCard({ project }) {
           </div>
         </div>
         <ul className="flex flex-wrap gap-x-5 gap-y-2 list-none p-0 m-0 font-mono text-sm text-offwhite/60">
-          {techs.map((t) => (
-            <li key={t}>{t}</li>
+          {techs.map((tech) => (
+            <li key={tech}>{tech}</li>
           ))}
         </ul>
       </div>
 
-      {/* ── Desktop layout (10-column overlapping grid) ── */}
-      <div className="hidden md:grid grid-cols-10 gap-0 items-center">
+      <div className="hidden md:grid grid-cols-12 gap-4 lg:gap-6 items-center">
         {reverse ? (
           <>
             {textBlock}
@@ -164,12 +174,17 @@ function ProjectCard({ project }) {
 export default function Projects() {
   return (
     <section id="projects" className="max-w-6xl mx-auto px-4 py-24">
-      {/* Section label */}
-      <p className="section-label !text-aqua/70 mb-2">02. Work</p>
-      <h2 className="text-white font-sans text-[40px] font-bold mb-20 text-left">
-        Projects I am Proud of
-      </h2>
-      <div className="flex flex-col gap-28 md:gap-40">
+      <div className="max-w-2xl mb-14 md:mb-16">
+        <p className="section-label !text-aqua/70 mb-3">04. Work</p>
+        <h2 className="text-white font-sans text-4xl md:text-5xl font-bold leading-tight">
+          Featured Projects
+        </h2>
+        <p className="text-offwhite/65 text-base md:text-lg mt-4 leading-8">
+          Selected work that reflects my problem solving, frontend work, and practical development experience.
+        </p>
+      </div>
+
+      <div className="flex flex-col gap-20 md:gap-28">
         {projects.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}

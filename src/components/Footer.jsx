@@ -1,6 +1,6 @@
 const socialLinks = [
   {
-    href: 'http://www.linkedin.com/in/rakesh-choudhary-035235233',
+    href: 'https://www.linkedin.com/in/rakesh-choudhary-035235233',
     icon: 'fa-brands fa-linkedin',
     label: 'LinkedIn',
   },
@@ -23,31 +23,29 @@ export default function Footer() {
         Rakesh Choudhary
       </p>
       <p className="text-offwhite/40 font-mono text-sm mb-5">
-        Mathematics &amp; Scientific Computing · NIT Warangal
+        Mathematics &amp; Scientific Computing | NIT Warangal
       </p>
 
       <ul className="flex justify-center gap-8 list-none p-0 m-0 text-2xl mb-6">
-        {socialLinks.map((s) => (
-          <li key={s.href}>
+        {socialLinks.map((link) => (
+          <li key={link.href}>
             <a
-              href={s.href}
+              href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={s.label}
+              aria-label={link.label}
               className="text-offwhite/50 hover:text-aqua transition-colors duration-200"
             >
-              <i className={s.icon} aria-hidden="true" />
-              <span className="sr-only">{s.label}</span>
+              <i className={link.icon} aria-hidden="true" />
+              <span className="sr-only">{link.label}</span>
             </a>
           </li>
         ))}
       </ul>
 
       <p className="text-offwhite/30 font-mono text-xs tracking-wide">
-        Designed &amp; Built by{' '}
-        <span className="text-aqua/60">Rakesh Choudhary</span>
-        {' '}·{' '}
-        &copy; {new Date().getFullYear()}
+        Designed &amp; Built by <span className="text-aqua/60">Rakesh Choudhary</span> | &copy;{' '}
+        {new Date().getFullYear()}
       </p>
     </footer>
   )

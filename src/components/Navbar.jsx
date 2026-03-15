@@ -2,13 +2,15 @@ import { useState } from 'react'
 
 const navLinks = [
   { label: 'About', href: '#about' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Education', href: '#education' },
   { label: 'Projects', href: '#projects' },
   { label: 'Contact', href: '#contact' },
 ]
 
 const socialLinks = [
   {
-    href: 'http://www.linkedin.com/in/rakesh-choudhary-035235233',
+    href: 'https://www.linkedin.com/in/rakesh-choudhary-035235233',
     icon: 'fa-brands fa-linkedin',
     label: 'LinkedIn',
   },
@@ -31,10 +33,10 @@ export default function Navbar() {
 
   return (
     <header className="font-mono text-sm sticky top-0 z-50 bg-black/95 backdrop-blur-sm border-b border-white/10">
-      <nav className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <nav className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
         {/* Logo / Name */}
         <a
-          href="#"
+          href="#intro"
           onClick={closeMenu}
           className="text-offwhite hover:text-magenta transition-colors duration-200 flex items-center gap-2 font-sans text-xl font-bold no-underline"
         >
@@ -43,12 +45,12 @@ export default function Navbar() {
         </a>
 
         {/* Desktop nav */}
-        <ul className="hidden md:flex items-center gap-8 list-none m-0 p-0">
+        <ul className="hidden lg:flex items-center gap-6 list-none m-0 p-0">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-offwhite hover:text-magenta transition-colors duration-200 no-underline"
+                className="text-offwhite hover:text-magenta transition-colors duration-200 no-underline whitespace-nowrap"
               >
                 {link.label}
               </a>
@@ -86,7 +88,7 @@ export default function Navbar() {
         {/* Mobile hamburger */}
         <button
           id="mobile-menu-btn"
-          className="md:hidden text-aqua text-2xl focus:outline-none"
+          className="lg:hidden text-aqua text-2xl focus:outline-none"
           onClick={() => setMenuOpen((prev) => !prev)}
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
@@ -97,7 +99,7 @@ export default function Navbar() {
 
       {/* Mobile drawer */}
       {menuOpen && (
-        <div className="md:hidden bg-dkblue px-6 pb-6 pt-2">
+        <div className="lg:hidden bg-dkblue px-6 pb-6 pt-2 border-t border-white/10">
           <ul className="flex flex-col gap-5 list-none p-0 m-0">
             {navLinks.map((link) => (
               <li key={link.href}>

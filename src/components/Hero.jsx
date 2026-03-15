@@ -2,25 +2,24 @@ export default function Hero() {
   return (
     <section
       id="intro"
-      className="hero-bg relative max-w-5xl mx-auto px-4 pt-24 pb-36"
+      className="hero-bg relative max-w-6xl mx-auto px-4 pt-24 pb-28 md:pt-28 md:pb-32"
     >
-      {/* Numbered label */}
-      <p className="section-label animate-fade-in-up">— Hello World</p>
+      <p className="section-label animate-fade-in-up">00. Hello World</p>
 
-      <p className="font-mono text-offwhite/70 text-xl mb-3 animate-fade-in-up animation-delay-200">
+      <p className="font-mono text-offwhite/70 text-lg md:text-xl mb-3 animate-fade-in-up animation-delay-200">
         Hi, my name is
       </p>
 
-      <p className="font-sans text-aqua text-6xl md:text-7xl font-bold mb-4 leading-tight animate-fade-in-up animation-delay-400">
+      <p className="font-sans text-aqua text-5xl md:text-7xl font-bold mb-4 leading-tight animate-fade-in-up animation-delay-400">
         Rakesh Choudhary
       </p>
 
-      <p className="text-offwhite/70 text-xl md:text-2xl leading-relaxed max-w-2xl mb-10 animate-fade-in-up animation-delay-600">
-        Aspiring Software Developer with a strong foundation in{' '}
-        <span className="text-aqua">C++</span>,{' '}
-        <span className="text-aqua">JavaScript</span>, and{' '}
-        <span className="text-aqua">Data Structures</span> — passionate about
-        building efficient, user-focused applications.
+      <p className="text-offwhite/70 text-lg md:text-2xl leading-relaxed max-w-3xl mb-10 animate-fade-in-up animation-delay-600">
+        Full Stack Developer with 1+ year of experience building scalable web
+        applications using <span className="text-aqua">React</span>,{' '}
+        <span className="text-aqua">Node.js</span>,{' '}
+        <span className="text-aqua">MongoDB</span>, and{' '}
+        <span className="text-aqua">Next.js</span>.
       </p>
 
       <div className="flex flex-wrap gap-4 animate-fade-in-up animation-delay-800">
@@ -37,6 +36,18 @@ export default function Hero() {
         >
           Get In Touch
         </a>
+      </div>
+
+      <div className="mt-10 flex flex-wrap gap-3 animate-fade-in-up animation-delay-800">
+        <span className="border border-white/10 bg-white/5 text-offwhite/70 rounded-full px-4 py-2 text-sm">
+          1+ year experience
+        </span>
+        <span className="border border-white/10 bg-white/5 text-offwhite/70 rounded-full px-4 py-2 text-sm">
+          MERN Stack
+        </span>
+        <span className="border border-white/10 bg-white/5 text-offwhite/70 rounded-full px-4 py-2 text-sm">
+          Google Cloud Platform
+        </span>
       </div>
     </section>
   )
