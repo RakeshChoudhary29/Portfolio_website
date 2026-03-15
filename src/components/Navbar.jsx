@@ -45,7 +45,7 @@ export default function Navbar() {
         </a>
 
         {/* Desktop nav */}
-        <ul className="hidden lg:flex items-center gap-6 list-none m-0 p-0">
+        <ul className="hidden xl:flex items-center gap-6 list-none m-0 p-0">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
@@ -88,7 +88,7 @@ export default function Navbar() {
         {/* Mobile hamburger */}
         <button
           id="mobile-menu-btn"
-          className="lg:hidden text-aqua text-2xl focus:outline-none"
+          className="xl:hidden text-aqua text-2xl focus:outline-none"
           onClick={() => setMenuOpen((prev) => !prev)}
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
@@ -99,7 +99,7 @@ export default function Navbar() {
 
       {/* Mobile drawer */}
       {menuOpen && (
-        <div className="lg:hidden bg-dkblue px-6 pb-6 pt-2 border-t border-white/10">
+        <div className="xl:hidden bg-dkblue px-6 pb-6 pt-2 border-t border-white/10">
           <ul className="flex flex-col gap-5 list-none p-0 m-0">
             {navLinks.map((link) => (
               <li key={link.href}>
