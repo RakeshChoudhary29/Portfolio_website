@@ -129,7 +129,7 @@ export default function Projects() {
   return (
     <section id="projects" className="max-w-6xl mx-auto px-4 sm:px-6 py-24">
       <div className="max-w-2xl mb-14 md:mb-16">
-        <p className="section-label !text-aqua/70 mb-3">04. Work</p>
+        <p className="section-label !text-aqua/70 mb-3">Work</p>
         <h2 className="text-white font-sans text-5xl md:text-6xl font-bold leading-tight">
           Featured Projects
         </h2>

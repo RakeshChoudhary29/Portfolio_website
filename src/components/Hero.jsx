@@ -14,7 +14,7 @@ export default function Hero() {
     >
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_360px] lg:items-start">
         <div>
-          <p className="section-label animate-fade-in-up">00. Hello World</p>
+          <p className="section-label animate-fade-in-up">Introduction</p>
 
           <p className="font-mono text-offwhite/70 text-base md:text-lg mb-3 animate-fade-in-up animation-delay-200">
             Hi, my name is
@@ -84,17 +84,6 @@ export default function Hero() {
               <p className="text-offwhite/60 text-sm mt-1">
                 National Institute of Technology, Warangal
               </p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4 mt-8">
-            <div className="rounded-xl border border-white/10 bg-black/20 p-4">
-              <p className="text-aqua text-2xl font-bold">45%</p>
-              <p className="text-offwhite/60 text-sm mt-1">Performance improvement</p>
-            </div>
-            <div className="rounded-xl border border-white/10 bg-black/20 p-4">
-              <p className="text-aqua text-2xl font-bold">99.9%</p>
-              <p className="text-offwhite/60 text-sm mt-1">Uptime delivered</p>
             </div>
           </div>
 

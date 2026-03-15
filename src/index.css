@@ -137,8 +137,9 @@ body {
 
 .section-label {
   font-family: 'Oxygen Mono', monospace;
-  font-size: 0.85rem;
-  letter-spacing: 0.15em;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #86fbfb;
   margin-bottom: 0.4rem;

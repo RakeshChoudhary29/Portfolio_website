@@ -51,7 +51,7 @@ export default function About() {
   return (
     <section id="about" className="py-24 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
-        <p className="section-label mb-2">01. About</p>
+        <p className="section-label mb-2">About</p>
 
         <div className="grid gap-12 md:grid-cols-[320px_minmax(0,1fr)] md:gap-14 items-start">
           <div className="w-full max-w-sm mx-auto md:max-w-none">

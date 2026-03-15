@@ -25,7 +25,7 @@ export default function Education() {
     <section id="education" className="py-24 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <div className="max-w-3xl mb-14">
-          <p className="section-label mb-3">03. Education</p>
+          <p className="section-label mb-3">Education</p>
           <h2 className="text-white text-5xl md:text-6xl font-bold leading-tight">
             Education
           </h2>
