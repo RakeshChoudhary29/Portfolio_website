@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion'
+
 export default function Experience({ data }) {
   return (
     <section id="experience" className="py-24 px-4 sm:px-6">
@@ -13,9 +15,13 @@ export default function Experience({ data }) {
         </div>
 
         <div className="space-y-8">
-          {data.items.map((item) => (
-            <article
+          {data.items.map((item, index) => (
+            <motion.article
               key={`${item.company}-${item.role}`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: index * 0.15 }}
               className="surface-card rounded-[1.5rem] p-6 md:p-8 md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-8"
             >
               <div className="mb-6 md:mb-0">
@@ -35,7 +41,7 @@ export default function Experience({ data }) {
                   ))}
                 </ul>
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
       </div>

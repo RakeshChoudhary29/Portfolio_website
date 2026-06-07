@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import profilePhoto from '../assets/user.jpg'
 
 export default function About({ data }) {
@@ -11,7 +12,13 @@ export default function About({ data }) {
         <p className="section-label mb-2">{data.sectionLabel}</p>
 
         <div className="grid gap-12 md:grid-cols-[320px_minmax(0,1fr)] md:gap-14 items-start">
-          <div className="w-full max-w-sm mx-auto md:max-w-none">
+          <motion.div 
+            className="w-full max-w-sm mx-auto md:max-w-none"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+          >
             <div className="relative group">
               <img
                 src={profilePhoto}
@@ -34,9 +41,15 @@ export default function About({ data }) {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="w-full">
+          <motion.div 
+            className="w-full"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <h2 className="text-white text-4xl md:text-5xl font-bold mb-5">{data.title}</h2>
             <p className="text-offwhite/70 leading-relaxed mb-8 text-lg max-w-3xl">
               {data.description}
@@ -58,30 +71,39 @@ export default function About({ data }) {
               ))}
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              {data.tabs[activeTab].items.map((item) => (
-                <article key={item.title} className="surface-card rounded-[1.25rem] p-5">
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <h3 className="text-[#b54769] font-semibold text-base">{item.title}</h3>
-                      <p className="text-offwhite/70 mt-3 leading-7">{item.value}</p>
+            <AnimatePresence mode="wait">
+              <motion.div 
+                key={activeTab}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+                className="grid gap-4 sm:grid-cols-2"
+              >
+                {data.tabs[activeTab].items.map((item) => (
+                  <article key={item.title} className="surface-card rounded-[1.25rem] p-5">
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <h3 className="text-[#b54769] font-semibold text-base">{item.title}</h3>
+                        <p className="text-offwhite/70 mt-3 leading-7">{item.value}</p>
+                      </div>
+                      {item.href ? (
+                        <a
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-aqua hover:text-magenta transition-colors duration-200 no-underline mt-1"
+                          aria-label={`Visit ${item.title}`}
+                        >
+                          <i className="fa-solid fa-arrow-up-right-from-square" aria-hidden="true" />
+                        </a>
+                      ) : null}
                     </div>
-                    {item.href ? (
-                      <a
-                        href={item.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-aqua hover:text-magenta transition-colors duration-200 no-underline mt-1"
-                        aria-label={`Visit ${item.title}`}
-                      >
-                        <i className="fa-solid fa-arrow-up-right-from-square" aria-hidden="true" />
-                      </a>
-                    ) : null}
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
+                  </article>
+                ))}
+              </motion.div>
+            </AnimatePresence>
+          </motion.div>
         </div>
       </div>
     </section>

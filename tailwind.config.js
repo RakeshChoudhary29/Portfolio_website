@@ -7,16 +7,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        black: '#171321',
+        black: '#0a0a0a',
+        surface: '#121212',
         dkblue: '#0d314b',
         plum: '#4b0d49',
         hotmag: '#ff17e4',
         magenta: '#e310cb',
-        aqua: '#86fbfb',
-        offwhite: '#f7f8fa',
+        aqua: '#00f2fe',
+        cyan: '#4facfe',
+        offwhite: '#fafafa',
       },
       fontFamily: {
-        sans: ['Oxygen', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
+        display: ['Outfit', 'sans-serif'],
         mono: ['"Oxygen Mono"', 'monospace'],
       },
     },

@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion'
+
 function LinkButton({ link }) {
   return (
     <a
@@ -54,20 +56,28 @@ function ProjectCard({ project, portfolioKey }) {
   const projectHref = `/?${params.toString()}`
 
   return (
-    <article className="grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-12 lg:items-center">
+    <motion.article 
+      className="grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-12 lg:items-center"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
       <div className={imageOrder}>
-        <ProjectVisual project={project} />
+        <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.3 }}>
+          <ProjectVisual project={project} />
+        </motion.div>
       </div>
 
       <div className={`${contentOrder} text-left`}>
         <p className="font-mono text-sm text-aqua/80 mb-2 tracking-widest uppercase">{project.label}</p>
         <h3 className="text-aqua text-2xl md:text-3xl font-bold mb-5 leading-snug">
-          <a href={projectHref} className="text-aqua no-underline hover:text-magenta transition-colors duration-200">
+          <a href={projectHref} className="text-aqua no-underline hover:text-cyan transition-colors duration-200">
             {project.title}
           </a>
         </h3>
 
-        <div className="black-box border border-white/8 shadow-2xl">
+        <div className="surface-card rounded-[1.5rem] p-5 shadow-2xl">
           <p className="text-base text-offwhite/85 leading-relaxed">{project.description}</p>
         </div>
 
@@ -90,14 +100,20 @@ function ProjectCard({ project, portfolioKey }) {
           ))}
         </ul>
       </div>
-    </article>
+    </motion.article>
   )
 }
 
 export default function Projects({ data, portfolioKey }) {
   return (
     <section id="projects" className="max-w-6xl mx-auto px-4 sm:px-6 py-24">
-      <div className="max-w-2xl mb-14 md:mb-16">
+      <motion.div 
+        className="max-w-2xl mb-14 md:mb-16"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+      >
         <p className="section-label !text-aqua/70 mb-3">{data.sectionLabel}</p>
         <h2 className="text-white font-sans text-5xl md:text-6xl font-bold leading-tight">
           {data.title}
@@ -105,7 +121,7 @@ export default function Projects({ data, portfolioKey }) {
         <p className="text-offwhite/65 text-base md:text-lg mt-4 leading-8">
           {data.description}
         </p>
-      </div>
+      </motion.div>
 
       <div className="flex flex-col gap-16 md:gap-20">
         {data.items.map((project, index) => (

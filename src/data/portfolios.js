@@ -1,6 +1,5 @@
 import nitwLogo from '../assets/nitw-logo.png'
 import duLogo from '../assets/du-logo.png'
-import ticketImg from '../assets/Ticket3.jpg'
 import shortestPathImg from '../assets/ShortestPath.png'
 import titanicImg from '../assets/Titanic3.jpg'
 import {
@@ -38,22 +37,23 @@ const sharedExperienceItems = [
   {
     role: 'Software Development Engineer - 1',
     company: 'Monkhub Innovations',
-    location: 'Gurgaon, India',
+    location: 'Gurugram, India',
     period: 'Aug 2025 - Present',
     points: [
-      'Architected full stack web applications using Next.js, React.js, and Node.js with server-side rendering.',
-      'Built data visualization dashboards with real-time analytics and role-based access control.',
+      'Developed secure backend services for blockchain token swap and bridge workflows using Node.js and Fireblocks APIs.',
+      'Optimized API response times through caching and query optimization.',
+      'Integrated Web3 wallet authentication flows, reducing session hijacking risks across primary token swap pairs.'
     ],
   },
   {
     role: 'Full Stack Developer',
     company: 'Code B Solutions Pvt. Ltd.',
     location: 'Mumbai, India',
-    period: '2024 - Aug 2025',
+    period: 'Sep 2024 - May 2025',
     points: [
-      'Engineered a scalable admin panel using the MERN stack for 1000+ concurrent users with real-time synchronization using Socket.io.',
-      'Designed Google Cloud Platform infrastructure with Compute Engine and Cloud Storage achieving 99.9% uptime.',
-      'Optimized database performance through MongoDB indexing, aggregation pipelines, and Redis caching.',
+      'Led the development of high-performance media streaming and logistics platforms deployed across 1000+ transit vehicles.',
+      'Engineered a custom Node.js/ffmpeg media pipeline reducing stream latency.',
+      'Implemented rigorous JWT/RBAC security systems for 5+ enterprise-level admin panels.',
     ],
   },
 ]
@@ -93,7 +93,7 @@ export const portfolioRegistry = {
       title: 'Full Stack Developer & Software Engineer crafting scalable web experiences.',
       description:
         'I am a Software Engineer and Full Stack Developer working with React, Next.js, Node.js, and MongoDB to build responsive, user-focused applications with strong performance and practical UI.',
-      chips: ['1+ year experience', 'MERN Stack', 'Google Cloud Platform'],
+      chips: ['1.5+ years experience', 'MERN Stack', 'Node.js', 'Google Cloud Platform'],
       card: {
         logo: nitwLogo,
         logoAlt: 'NIT Warangal logo',
@@ -103,7 +103,7 @@ export const portfolioRegistry = {
         highlights: [
           'Responsive frontend and clean component architecture',
           'MERN stack and Next.js development',
-          'Cloud deployment and performance-focused delivery',
+          'Cloud deployment and scalable backend architecture',
         ],
       },
     },
@@ -111,7 +111,7 @@ export const portfolioRegistry = {
       sectionLabel: 'About',
       title: 'About Me',
       description:
-        'I am Rakesh Choudhary, a Software Engineer and Full Stack Developer with experience building scalable web applications using the MERN stack, Next.js, and Google Cloud Platform. I enjoy combining strong problem-solving skills with clean, responsive interfaces and practical product thinking.',
+        'I am Rakesh Choudhary, a Software Engineer and Full Stack Developer with experience building scalable web applications using the MERN stack, Next.js, and Cloud Platforms. I enjoy combining strong problem-solving skills with clean, responsive interfaces and practical product thinking.',
       snapshotTitle: 'Quick Snapshot',
       snapshotItems: [
         'Frontend-focused full stack developer',
@@ -124,15 +124,15 @@ export const portfolioRegistry = {
           items: [
             {
               title: 'Frontend Development',
-              value: 'React.js | Next.js | JavaScript | TypeScript | HTML | CSS',
+              value: 'React.js | Next.js | JavaScript ES6+ | TypeScript | Redux Toolkit | Tailwind CSS',
             },
             {
               title: 'Backend Development',
-              value: 'Node.js | Express.js | REST APIs | JWT | Socket.io',
+              value: 'Node.js | Express.js | REST APIs | JWT | Socket.io | Microservices',
             },
             {
               title: 'Databases and Cloud',
-              value: 'MongoDB | MySQL | Redis | Google Cloud Platform',
+              value: 'MongoDB | MySQL | Redis | GCP | AWS | Docker',
             },
             {
               title: 'Programming Languages',
@@ -173,43 +173,47 @@ export const portfolioRegistry = {
       sectionLabel: 'Work',
       title: 'Featured Projects',
       description:
-        'Selected work that reflects my product thinking, frontend work, and practical software development experience.',
+        'Selected work that reflects my product thinking, backend architecture, and practical software development experience.',
       items: [
+        {
+          id: 'dms',
+          label: 'Featured Project',
+          title: 'Device Management System (DMS)',
+          description:
+            'Developed a high-concurrency Node.js streaming pipeline scaling across transit vehicle camera networks. Reverse-engineered proprietary camera network protocols and captured feeds with audio via ffmpeg, buffering streams in RAM.',
+          links: [],
+          techs: ['Node.js', 'Docker', 'GCP', 'ffmpeg', 'MongoDB'],
+          placeholder: 'DMS',
+          reverse: false,
+        },
+        {
+          id: 'mnee',
+          label: 'Featured Project',
+          title: 'MNEE - Blockchain Token Platform',
+          description:
+            'Constructed a backend transaction pipeline integrating Fireblocks and 0x API, supporting quote routing across smart contract tokens. Integrated Google reCAPTCHA Enterprise on staging endpoints to prevent automated transaction abuse.',
+          links: [],
+          techs: ['Node.js', 'React.js', 'Fireblocks', '0x API'],
+          placeholder: 'MNE',
+          reverse: true,
+        },
         {
           id: 'roldrive',
           label: 'Featured Project',
-          title: 'RolDrive Admin Platform',
+          title: 'RolDrive Ride Booking',
           description:
-            'Built an internal admin platform to manage ride operations end to end, including live trip visibility, chauffeur and vehicle assignment workflows, and operations monitoring. The system was designed to help business teams make faster decisions through clearer status tracking, streamlined actions, and analytics-focused dashboards.',
+            'Created real-time dispatch systems using Socket.io and designed a high-performance geospatial indexing ride assignment algorithm. Built an internal admin platform with JWT/RBAC security for end-to-end operational workflows.',
           links: [],
           techs: ['React', 'Node.js', 'Socket.io', 'MongoDB'],
           placeholder: 'RD',
           reverse: false,
         },
         {
-          id: 'movie-ticket',
-          label: 'Featured Project',
-          title: 'Movie Ticket Booking System',
-          description:
-            'Developed a movie ticket booking system focused on seat selection, booking flow management, and availability tracking. The project emphasizes object-oriented design, structured file handling, and reliable booking logic for handling theatre data, schedules, and reservation updates in a desktop-style application flow.',
-          links: [
-            {
-              url: 'https://github.com/RakeshChoudhary29/Movie-Ticket-Booking-System',
-              label: 'Source Code',
-              icon: 'fa-brands fa-github',
-            },
-          ],
-          techs: ['C++', 'File Handling', 'OOP'],
-          image: ticketImg,
-          imageAlt: 'Rakesh Choudhary Software Engineer - Movie Ticket Booking System UI',
-          reverse: true,
-        },
-        {
           id: 'shortest-path',
           label: 'Featured Project',
           title: 'Shortest Path Visualizer',
           description:
-            'Created an interactive graph visualizer to demonstrate Dijkstra shortest path computation with dynamic node and edge editing. The tool helps users understand how pathfinding works step by step through a hands-on interface, real-time recalculation, and visual feedback for graph changes and computed routes.',
+            'Created an interactive graph visualizer to demonstrate Dijkstra shortest path computation with dynamic node and edge editing. The tool helps users understand how pathfinding works step by step through a hands-on interface.',
           links: [
             {
               url: 'https://github.com/RakeshChoudhary29/Shortest-Path',
@@ -217,15 +221,15 @@ export const portfolioRegistry = {
               icon: 'fa-brands fa-github',
             },
             {
-              url: 'https://rakeshchoudhary29.github.io/Shortest-Path/',
+              url: 'https://shortestpath.rakeshchoudhary.dev/',
               label: 'Live Demo',
               icon: 'fa-solid fa-arrow-up-right-from-square',
             },
           ],
-          techs: ['HTML', 'CSS', 'JavaScript'],
+          techs: ['HTML Canvas', 'CSS', 'JavaScript'],
           image: shortestPathImg,
           imageAlt: 'Rakesh Choudhary Software Engineer - Shortest Path Visualizer Tool',
-          reverse: false,
+          reverse: true,
         },
       ],
     },
@@ -261,18 +265,18 @@ export const portfolioRegistry = {
       name: 'Rakesh Choudhary',
       title: 'AI/ML and data-focused engineer building insight-driven systems.',
       description:
-        'I work with Python, SQL, analytics workflows, and data-heavy applications to build useful models, dashboards, and engineering pipelines.',
-      chips: ['Machine Learning', 'Data Engineering', 'Analytics Workflows'],
+        'I work with modern AI frameworks like LangChain, OpenAI APIs, and automation workflows to build intelligent backend services and data-centric applications.',
+      chips: ['AI/LLM Workflows', 'Automation Workflows', 'Data Engineering'],
       card: {
         logo: nitwLogo,
         logoAlt: 'NIT Warangal logo',
         eyebrow: 'Focus Area',
         title: 'AI / ML and Data Engineering',
-        subtitle: 'Applied analytics, data workflows, and model-oriented thinking',
+        subtitle: 'Applied analytics, LLM workflows, and model-oriented thinking',
         highlights: [
-          'Python, SQL, and data-centric problem solving',
-          'Analytics dashboards and reporting workflows',
-          'Data modeling, pipelines, and optimization',
+          'Python, LangChain, and API-driven problem solving',
+          'Prompt Engineering and AI service integrations',
+          'Data modeling, pipelines, and automation',
         ],
       },
     },
@@ -280,11 +284,11 @@ export const portfolioRegistry = {
       sectionLabel: 'About',
       title: 'About Me',
       description:
-        'I am Rakesh Choudhary, an engineer with strong analytical foundations and growing experience across AI/ML, analytics, and data-heavy product systems. I enjoy turning raw data and business problems into useful insights, clean workflows, and practical tools.',
+        'I am Rakesh Choudhary, an engineer with strong analytical foundations and experience across AI workflows, LLM integrations, and data-heavy systems. I enjoy turning complex AI capabilities into useful backend services, clean workflows, and practical automated tools.',
       snapshotTitle: 'Quick Snapshot',
       snapshotItems: [
-        'Data-focused engineering mindset',
-        'Analytics, SQL, and model-driven workflows',
+        'AI workflow engineering mindset',
+        'LangChain, Prompt Engineering, and APIs',
         'Strong math and problem solving foundation',
       ],
       tabs: {
@@ -292,20 +296,20 @@ export const portfolioRegistry = {
           label: 'Skills',
           items: [
             {
-              title: 'Machine Learning',
-              value: 'Python | scikit-learn | NumPy | pandas | model evaluation',
+              title: 'AI / ML & LLMs',
+              value: 'LangChain | OpenAI API | Gemini API | Prompt Engineering',
+            },
+            {
+              title: 'Automation & Workflows',
+              value: 'n8n | Telegram Bot API | Webhook Integrations',
             },
             {
               title: 'Data Engineering',
-              value: 'SQL | ETL thinking | MongoDB pipelines | Redis | query optimization',
+              value: 'SQL | MongoDB Pipelines | Redis | Query Optimization',
             },
             {
-              title: 'Analytics and Visualization',
-              value: 'Dashboards | reporting workflows | business insights | statistics',
-            },
-            {
-              title: 'Programming',
-              value: 'Python | SQL | JavaScript | TypeScript | C++',
+              title: 'Programming & Cloud',
+              value: 'Python | JavaScript | AWS (S3, SES, SNS) | Docker',
             },
           ],
         },
@@ -334,22 +338,44 @@ export const portfolioRegistry = {
       sectionLabel: 'Experience',
       title: 'Analytics and Data-Oriented Experience',
       description:
-        'Experience spanning analytics dashboards, reporting systems, scalable backend data flows, and performance optimization.',
+        'Experience spanning AI-driven workflows, real-time backend data flows, and performance optimization.',
       items: sharedExperienceItems,
     },
     education: sharedEducation,
     projects: {
       sectionLabel: 'Work',
-      title: 'Data and AI Projects',
+      title: 'AI & Data Projects',
       description:
-        'Projects and applied work that reflect analytics thinking, model interpretation, and data-oriented engineering.',
+        'Projects and applied work that reflect AI workflow integrations, LLM capabilities, and data-oriented automation.',
       items: [
+        {
+          id: 'most-ai',
+          label: 'Featured Project',
+          title: 'MOST - Hospitality AI Platform',
+          description:
+            'Architected an AI recommendation engine using LangChain and OpenAI, improving dynamic response generation. Designed modular NestJS services for scalable AI travel workflows and deployed robust communication workflows utilizing AWS S3, SES, and SNS.',
+          links: [],
+          techs: ['NestJS', 'LangChain', 'OpenAI', 'AWS', 'MongoDB'],
+          placeholder: 'AI',
+          reverse: false,
+        },
+        {
+          id: 'expense-automation',
+          label: 'Applied Work',
+          title: 'Expense Tracker Automation',
+          description:
+            'Developed a Telegram bot using Gemini AI to parse receipts into structured Google Sheets via n8n. Fully automated financial tracking by parsing unstructured images and text into structured data with high accuracy.',
+          links: [],
+          techs: ['n8n', 'Gemini API', 'Telegram API', 'Docker'],
+          placeholder: 'BOT',
+          reverse: true,
+        },
         {
           id: 'titanic',
           label: 'Data Project',
           title: 'Titanic Survival Analysis',
           description:
-            'Performed exploratory data analysis on the Titanic dataset to identify survival trends across passenger demographics, ticket class, and travel patterns. The project focuses on cleaning data, comparing features, and using visual analysis to uncover interpretable insights that explain how different variables influenced survival outcomes.',
+            'Performed exploratory data analysis on the Titanic dataset to identify survival trends across passenger demographics, ticket class, and travel patterns. The project focuses on cleaning data, comparing features, and using visual analysis.',
           links: [
             {
               url: 'https://github.com/RakeshChoudhary29/Titanic',
@@ -362,34 +388,12 @@ export const portfolioRegistry = {
           imageAlt: 'Rakesh Choudhary Data Engineer - Titanic Survival Analysis Project',
           reverse: false,
         },
-        {
-          id: 'analytics-dashboard',
-          label: 'Applied Work',
-          title: 'Real-Time Analytics Dashboard',
-          description:
-            'Worked on dashboard experiences that surface operational KPIs, performance metrics, and reporting insights in a clear and actionable format. The goal was to improve decision-making for internal teams through better visibility, structured filters, and near real-time updates across business and operational views.',
-          links: [],
-          techs: ['Analytics', 'Dashboards', 'RBAC', 'Reporting'],
-          placeholder: 'BI',
-          reverse: true,
-        },
-        {
-          id: 'data-optimization',
-          label: 'Applied Work',
-          title: 'Data Pipeline and Query Optimization',
-          description:
-            'Improved backend data workflows by optimizing queries, designing aggregation pipelines, and reducing response times through indexing and caching strategies. This work focused on making data-heavy applications more scalable and reliable while supporting reporting needs, cloud-backed deployments, and efficient access patterns.',
-          links: [],
-          techs: ['MongoDB', 'Redis', 'GCP', 'Optimization'],
-          placeholder: 'DE',
-          reverse: false,
-        },
       ],
     },
     contact: {
       ...sharedContact,
       description:
-        "I'm always interested in AI/ML, analytics, and data engineering roles where I can work on meaningful data-driven systems.",
+        "I'm always interested in AI/ML, analytics, and backend engineering roles where I can work on meaningful data-driven systems.",
     },
   },
 }

@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion'
+
 export default function Hero({ data }) {
   return (
     <section
@@ -5,26 +7,55 @@ export default function Hero({ data }) {
       className="hero-bg relative max-w-6xl mx-auto px-4 sm:px-6 pt-20 pb-24 md:pt-24 md:pb-28"
     >
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_340px] lg:items-start">
-        <div>
-          <p className="section-label animate-fade-in-up">{data.sectionLabel}</p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+        >
+          <p className="section-label">{data.sectionLabel}</p>
 
-          <p className="font-mono text-offwhite/70 text-base md:text-lg mb-3 animate-fade-in-up animation-delay-200">
+          <motion.p 
+            className="font-mono text-offwhite/70 text-base md:text-lg mb-3"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+          >
             {data.intro}
-          </p>
+          </motion.p>
 
-          <h1 className="font-sans text-aqua text-5xl sm:text-6xl md:text-7xl font-bold mb-4 leading-tight animate-fade-in-up animation-delay-400">
+          <motion.h1 
+            className="font-sans text-transparent bg-clip-text bg-gradient-to-r from-aqua to-cyan text-5xl sm:text-6xl md:text-7xl font-bold mb-4 leading-tight"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
             {data.name}
-          </h1>
+          </motion.h1>
 
-          <p className="text-offwhite text-2xl md:text-3xl font-semibold leading-tight max-w-2xl mb-5 animate-fade-in-up animation-delay-400">
+          <motion.p 
+            className="text-offwhite text-2xl md:text-3xl font-semibold leading-tight max-w-2xl mb-5"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
             {data.title}
-          </p>
+          </motion.p>
 
-          <p className="text-offwhite/70 text-lg md:text-xl leading-relaxed max-w-3xl mb-10 animate-fade-in-up animation-delay-600">
+          <motion.p 
+            className="text-offwhite/70 text-lg md:text-xl leading-relaxed max-w-3xl mb-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+          >
             {data.description}
-          </p>
+          </motion.p>
 
-          <div className="flex flex-wrap gap-4 animate-fade-in-up animation-delay-800">
+          <motion.div 
+            className="flex flex-wrap gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
+          >
             <a
               href="#projects"
               className="bg-magenta hover:bg-hotmag text-white font-mono px-7 py-3 rounded-md transition-colors duration-200 inline-flex items-center no-underline text-base"
@@ -38,9 +69,14 @@ export default function Hero({ data }) {
             >
               Get In Touch
             </a>
-          </div>
+          </motion.div>
 
-          <div className="mt-10 flex flex-wrap gap-3 animate-fade-in-up animation-delay-800">
+          <motion.div 
+            className="mt-10 flex flex-wrap gap-3"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
+          >
             {data.chips.map((chip) => (
               <span
                 key={chip}
@@ -49,10 +85,15 @@ export default function Hero({ data }) {
                 {chip}
               </span>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <aside className="surface-card rounded-[1.5rem] p-5 md:p-6 animate-fade-in-up animation-delay-600">
+        <motion.aside 
+          className="surface-card rounded-[1.5rem] p-5 md:p-6"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.6, duration: 0.6, ease: 'easeOut' }}
+        >
           <div className="flex items-center gap-4">
             <div className="flex h-16 w-16 items-center justify-center rounded-[1rem] bg-white p-2.5 shadow-lg">
               <img
@@ -86,7 +127,7 @@ export default function Hero({ data }) {
               </div>
             ))}
           </div>
-        </aside>
+        </motion.aside>
       </div>
     </section>
   )
