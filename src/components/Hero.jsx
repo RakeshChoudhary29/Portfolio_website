@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion'
+import MagneticButton from './ui/MagneticButton'
+import TiltCard from './ui/TiltCard'
 
 export default function Hero({ data }) {
   return (
@@ -56,13 +58,13 @@ export default function Hero({ data }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.6 }}
           >
-            <a
+            <MagneticButton
               href="#projects"
-              className="bg-magenta hover:bg-hotmag text-white font-mono px-7 py-3 rounded-md transition-colors duration-200 inline-flex items-center no-underline text-base"
+              className="bg-cyan text-black hover:bg-cyan/90 font-mono px-7 py-3 rounded-full transition-colors duration-200 no-underline text-base font-bold shadow-[0_0_20px_rgba(79,172,254,0.3)]"
             >
               View Projects
               <i className="fa-solid fa-arrow-right ml-2 text-sm" aria-hidden="true" />
-            </a>
+            </MagneticButton>
             <a
               href="#contact"
               className="border border-aqua text-aqua hover:bg-aqua/10 font-mono px-7 py-3 rounded-md transition-colors duration-200 inline-flex items-center no-underline text-base"
@@ -95,14 +97,16 @@ export default function Hero({ data }) {
           transition={{ delay: 0.6, duration: 0.6, ease: 'easeOut' }}
         >
           <div className="flex items-center gap-4">
-            <div className="flex h-16 w-16 items-center justify-center rounded-[1rem] bg-white p-2.5 shadow-lg">
-              <img
-                src={data.card.logo}
-                alt={data.card.logoAlt}
-                className="max-h-full max-w-full object-contain"
-                fetchpriority="high"
-              />
-            </div>
+            <TiltCard>
+              <div className="flex h-16 w-16 items-center justify-center rounded-[1rem] bg-black/50 p-2.5 shadow-lg border border-white/10">
+                <img
+                  src={data.card.logo}
+                  alt={data.card.logoAlt}
+                  className="max-h-full max-w-full object-contain filter brightness-200"
+                  fetchpriority="high"
+                />
+              </div>
+            </TiltCard>
             <div>
               <p className="font-mono text-xs uppercase tracking-[0.16em] text-aqua/80">
                 {data.card.eyebrow}
@@ -122,7 +126,7 @@ export default function Hero({ data }) {
                 key={item}
                 className="flex items-start gap-3 rounded-xl border border-white/8 bg-black/15 px-4 py-3"
               >
-                <span className="mt-1 h-2.5 w-2.5 rounded-full bg-aqua flex-shrink-0" />
+                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-cyan flex-shrink-0 shadow-[0_0_8px_rgba(79,172,254,0.8)]" />
                 <p className="text-offwhite/72 text-sm leading-6">{item}</p>
               </div>
             ))}
