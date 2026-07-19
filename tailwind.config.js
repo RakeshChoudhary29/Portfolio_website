@@ -10,8 +10,6 @@ export default {
         black: '#111114',
         surface: '#1a1a1f',
         'surface-elevated': '#222228',
-        'surface-muted': '#16161a',
-        dkblue: '#151a24',
         plum: '#1c1526',
         hotmag: '#ff17e4',
         magenta: '#e310cb',

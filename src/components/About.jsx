@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import profilePhoto from '../assets/user.jpg'
 import useSpotlight from '../hooks/useSpotlight'
 import CountUp from './ui/CountUp'
+import SectionHeader from './SectionHeader'
 
 function AboutTabItem({ item, index }) {
   const spotlight = useSpotlight()
@@ -45,10 +46,7 @@ export default function About({ data }) {
   return (
     <section id="about" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
-        <p className="section-label">
-          <span className="text-offwhite/30 mr-2">01.</span>
-          {data.sectionLabel}
-        </p>
+        <SectionHeader index={1} label={data.sectionLabel} />
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,300px)_minmax(0,1fr)] md:gap-12 lg:gap-14 items-start">
           <motion.div

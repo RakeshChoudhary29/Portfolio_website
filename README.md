@@ -44,7 +44,7 @@ src/
 │   ├── site.js           # site-wide constants (URLs, socials, resume paths)
 │   └── motion.js         # shared Framer Motion easing/duration tokens
 ├── components/           # one component per section + Seo.jsx (runtime meta tags)
-│   └── ui/               # MagneticButton, TiltCard, SpotlightCard, RotatingText…
+│   └── ui/               # MagneticButton, TiltCard, Timeline, RotatingText…
 └── hooks/                # useActiveSection (scroll-spy), useSpotlight (cursor glow)
 ```
 

@@ -1,17 +1,19 @@
 import { motion } from 'framer-motion'
 import useSpotlight from '../hooks/useSpotlight'
 import ContactForm, { hasContactForm } from './ContactForm'
+import SectionHeader from './SectionHeader'
 import { fadeUp } from '../constants/motion'
+import { CONTACT_EMAIL, SOCIAL_LINKS } from '../constants/site'
 
 const directLinks = [
   {
-    href: 'mailto:rakeshtheone29@gmail.com',
+    href: `mailto:${CONTACT_EMAIL}`,
     icon: 'fa-solid fa-envelope',
     label: 'Email',
-    value: 'rakeshtheone29@gmail.com',
+    value: CONTACT_EMAIL,
   },
   {
-    href: 'https://www.linkedin.com/in/rakeshchoudhary29/',
+    href: SOCIAL_LINKS.linkedin,
     icon: 'fa-brands fa-linkedin',
     label: 'LinkedIn',
     value: 'in/rakeshchoudhary29',
@@ -54,18 +56,16 @@ export default function Contact({ data }) {
           className="spotlight-card rounded-2xl p-6 sm:p-8 md:p-10 text-center"
           {...fadeUp()}
         >
-          <p className="section-label !text-offwhite/45 mb-3">
-            <span className="text-offwhite/25 mr-2">05.</span>
-            {data.sectionLabel}
-          </p>
-
-          <h2 className="text-offwhite font-display text-fluid-h2 font-bold mb-5">
-            {data.title}
-          </h2>
-
-          <p className="text-offwhite/65 text-base sm:text-lg leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto">
-            {data.description}
-          </p>
+          <SectionHeader
+            index={5}
+            label={data.sectionLabel}
+            title={data.title}
+            description={data.description}
+            labelClassName="!text-offwhite/45 mb-3"
+            numberClassName="text-offwhite/25"
+            titleClassName="mb-5"
+            descriptionClassName="text-offwhite/65 text-base sm:text-lg leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto"
+          />
 
           {hasContactForm ? (
             <div className="grid grid-cols-1 gap-8 text-left md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] md:gap-10">
@@ -82,7 +82,7 @@ export default function Contact({ data }) {
           ) : (
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
               <motion.a
-                href="mailto:rakeshtheone29@gmail.com"
+                href={`mailto:${CONTACT_EMAIL}`}
                 whileTap={{ scale: 0.97 }}
                 className="cta-glow bg-cyan text-black hover:bg-cyan/90 font-mono px-7 py-3 rounded-full inline-flex items-center justify-center no-underline text-sm sm:text-base font-semibold"
               >
@@ -90,7 +90,7 @@ export default function Contact({ data }) {
                 Email Me
               </motion.a>
               <motion.a
-                href="https://www.linkedin.com/in/rakeshchoudhary29/"
+                href={SOCIAL_LINKS.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 whileTap={{ scale: 0.97 }}

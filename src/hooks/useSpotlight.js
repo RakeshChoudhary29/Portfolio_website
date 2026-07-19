@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 
 /**
  * Returns props to spread onto any element to give it a cursor-following
@@ -9,28 +9,26 @@ import { useRef, useState } from 'react'
  */
 export default function useSpotlight(glow = 'rgba(94, 234, 212, 0.14)') {
   const ref = useRef(null)
-  const [pos, setPos] = useState({ x: 50, y: 50 })
-  const [active, setActive] = useState(false)
 
+  // Written straight to CSS variables on the node — pointer moves must never
+  // setState, or every mousemove re-renders the whole card subtree.
   const onMouseMove = (event) => {
-    if (!ref.current) return
-    const rect = ref.current.getBoundingClientRect()
-    setPos({
-      x: ((event.clientX - rect.left) / rect.width) * 100,
-      y: ((event.clientY - rect.top) / rect.height) * 100,
-    })
+    const node = ref.current
+    if (!node) return
+    const rect = node.getBoundingClientRect()
+    node.style.setProperty('--spot-x', `${((event.clientX - rect.left) / rect.width) * 100}%`)
+    node.style.setProperty('--spot-y', `${((event.clientY - rect.top) / rect.height) * 100}%`)
+  }
+
+  const setGlowOpacity = (value) => {
+    ref.current?.style.setProperty('--spot-opacity', value)
   }
 
   return {
     ref,
     onMouseMove,
-    onMouseEnter: () => setActive(true),
-    onMouseLeave: () => setActive(false),
-    style: {
-      '--spot-x': `${pos.x}%`,
-      '--spot-y': `${pos.y}%`,
-      '--spot-color': glow,
-      '--spot-opacity': active ? 1 : 0,
-    },
+    onMouseEnter: () => setGlowOpacity('1'),
+    onMouseLeave: () => setGlowOpacity('0'),
+    style: { '--spot-color': glow },
   }
 }

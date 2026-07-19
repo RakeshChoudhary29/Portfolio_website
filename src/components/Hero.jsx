@@ -106,19 +106,10 @@ export default function Hero({ data }) {
           <div className="flex items-center gap-3">
             <TiltCard>
               <div className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-surface-elevated p-2 border border-white/10">
-                {data.card.icon ? (
-                  <i
-                    className={`${data.card.icon} text-aqua text-lg sm:text-xl`}
-                    aria-hidden="true"
-                  />
-                ) : (
-                  <img
-                    src={data.card.logo}
-                    alt={data.card.logoAlt}
-                    className="max-h-full max-w-full object-contain"
-                    fetchpriority="high"
-                  />
-                )}
+                <i
+                  className={`${data.card.icon} text-aqua text-lg sm:text-xl`}
+                  aria-hidden="true"
+                />
               </div>
             </TiltCard>
             <p className="flex items-center gap-2 font-mono text-[0.7rem] sm:text-xs uppercase tracking-[0.14em] text-aqua/80">

@@ -1,16 +1,18 @@
+import { CONTACT_EMAIL, SOCIAL_LINKS } from '../constants/site'
+
 const socialLinks = [
   {
-    href: 'https://www.linkedin.com/in/rakeshchoudhary29/',
+    href: SOCIAL_LINKS.linkedin,
     icon: 'fa-brands fa-linkedin',
     label: 'LinkedIn',
   },
   {
-    href: 'https://github.com/RakeshChoudhary29',
+    href: SOCIAL_LINKS.github,
     icon: 'fa-brands fa-square-github',
     label: 'GitHub',
   },
   {
-    href: 'mailto:rakeshtheone29@gmail.com',
+    href: `mailto:${CONTACT_EMAIL}`,
     icon: 'fa-solid fa-envelope',
     label: 'Email',
   },

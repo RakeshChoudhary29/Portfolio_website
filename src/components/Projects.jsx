@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion'
 import useSpotlight from '../hooks/useSpotlight'
-import { fadeUp, EASE_OUT } from '../constants/motion'
+import { fadeUp } from '../constants/motion'
+import { getProjectSearch } from '../data/portfolios'
+import SectionHeader from './SectionHeader'
+import TechChips from './TechChips'
 
 // Accent colors cycle per card so each has its own identity without needing images.
 const ACCENTS = [
@@ -206,29 +209,22 @@ function ProjectCard({ project, index, featured = false, portfolioKey }) {
 
   // Canonical per-project deep link (?project=<id>, +?type= for non-default
   // portfolios). Matches public/sitemap.xml and feeds project-specific SEO.
-  const params = new URLSearchParams()
-  if (portfolioKey && portfolioKey !== 'software') params.set('type', portfolioKey)
-  params.set('project', project.id)
-  const projectHref = `/?${params.toString()}`
+  const projectHref = `/${getProjectSearch(portfolioKey, project.id)}`
 
   return (
     <div className={`dim-item h-full ${featured ? 'md:col-span-2' : ''}`}>
       <motion.article
         {...spotlight}
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-60px' }}
-        transition={{ duration: 0.45, ease: EASE_OUT, delay: (index % 2) * 0.08 }}
+        {...fadeUp((index % 2) * 0.08, 24)}
         whileHover={{ y: -4 }}
         className={`spotlight-card group relative flex h-full flex-col overflow-hidden rounded-2xl p-6 sm:p-7 ${
           featured ? 'md:grid md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] md:gap-8' : ''
         }`}
       >
-        {/* Accent top bar. !absolute: .spotlight-card > * forces position:relative
-            on children, which would otherwise pull this bar into the grid flow. */}
+        {/* Accent top bar */}
         <span
           aria-hidden="true"
-          className={`!absolute inset-x-0 top-0 h-0.5 ${accent.bar} opacity-70`}
+          className={`absolute inset-x-0 top-0 h-0.5 ${accent.bar} opacity-70`}
         />
 
         <ProjectVisual project={project} accent={accent} index={index} tall={featured} />
@@ -259,16 +255,7 @@ function ProjectCard({ project, index, featured = false, portfolioKey }) {
             {project.description}
           </p>
 
-          <ul className="mt-5 flex flex-wrap gap-2 list-none p-0 font-mono text-[0.65rem] uppercase tracking-[0.1em] text-offwhite/50">
-            {project.techs.map((tech) => (
-              <li
-                key={tech}
-                className="rounded-full border border-white/10 bg-surface-elevated px-2.5 py-1 transition-colors duration-200 hover:border-aqua/30 hover:text-offwhite/75"
-              >
-                {tech}
-              </li>
-            ))}
-          </ul>
+          <TechChips items={project.techs} />
 
           <div className="mt-auto flex flex-wrap items-center gap-2.5 pt-5">
             {project.links.length > 0 ? (
@@ -287,16 +274,14 @@ export default function Projects({ data, portfolioKey }) {
   return (
     <section id="projects" className="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24">
       <motion.div className="max-w-2xl mb-10 md:mb-14" {...fadeUp()}>
-        <p className="section-label !text-aqua/70">
-          <span className="text-offwhite/30 mr-2">04.</span>
-          {data.sectionLabel}
-        </p>
-        <h2 className="text-offwhite font-display text-fluid-h2 font-bold">
-          {data.title}
-        </h2>
-        <p className="text-offwhite/60 text-base md:text-lg mt-3 sm:mt-4 leading-relaxed">
-          {data.description}
-        </p>
+        <SectionHeader
+          index={4}
+          label={data.sectionLabel}
+          title={data.title}
+          description={data.description}
+          labelClassName="!text-aqua/70"
+          descriptionClassName="text-offwhite/60 text-base md:text-lg mt-3 sm:mt-4 leading-relaxed"
+        />
       </motion.div>
 
       <div className="dim-siblings grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">

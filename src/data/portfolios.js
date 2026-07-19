@@ -464,16 +464,21 @@ export function getPortfolioUrl(portfolioKey) {
   return `${SITE_URL}/?type=${portfolioKey}`
 }
 
-export function getProjectUrl(portfolioKey, projectId) {
+/** Query string for a project deep link, e.g. "?type=aiml&project=<id>". */
+export function getProjectSearch(portfolioKey, projectId) {
   const params = new URLSearchParams()
 
-  if (portfolioKey !== 'software') {
+  if (portfolioKey && portfolioKey !== 'software') {
     params.set('type', portfolioKey)
   }
 
   params.set('project', projectId)
 
-  return `${SITE_URL}/?${params.toString()}`
+  return `?${params.toString()}`
+}
+
+export function getProjectUrl(portfolioKey, projectId) {
+  return `${SITE_URL}/${getProjectSearch(portfolioKey, projectId)}`
 }
 
 export function buildMetadata(portfolio, project) {
