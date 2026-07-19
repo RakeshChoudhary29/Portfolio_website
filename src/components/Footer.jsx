@@ -18,7 +18,7 @@ const socialLinks = [
 
 export default function Footer({ subtitle }) {
   return (
-    <footer className="bg-black text-center py-10 sm:py-12 px-4 border-t border-white/8">
+    <footer className="bg-black text-center px-4 pt-10 pb-16 sm:py-12 border-t border-white/8">
       <p className="text-offwhite font-sans text-base sm:text-lg font-semibold mb-1">
         Rakesh Choudhary
       </p>

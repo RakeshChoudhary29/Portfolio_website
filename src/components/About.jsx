@@ -50,7 +50,7 @@ export default function About({ data }) {
           {data.sectionLabel}
         </p>
 
-        <div className="grid gap-10 md:grid-cols-[minmax(0,300px)_minmax(0,1fr)] md:gap-12 lg:gap-14 items-start">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-[minmax(0,300px)_minmax(0,1fr)] md:gap-12 lg:gap-14 items-start">
           <motion.div
             className="w-full max-w-xs mx-auto md:max-w-none"
             initial={{ opacity: 0, y: 20 }}
@@ -146,7 +146,7 @@ export default function About({ data }) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.2 }}
-                className="grid gap-3 sm:grid-cols-2"
+                className="grid grid-cols-1 gap-3 sm:grid-cols-2"
               >
                 {data.tabs[activeTab].items.map((item, index) => (
                   <AboutTabItem key={item.title} item={item} index={index} />

@@ -299,7 +299,7 @@ export default function Projects({ data, portfolioKey }) {
         </p>
       </motion.div>
 
-      <div className="dim-siblings grid gap-5 sm:gap-6 md:grid-cols-2">
+      <div className="dim-siblings grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
         {data.items.map((project, index) => (
           <ProjectCard
             key={project.id}

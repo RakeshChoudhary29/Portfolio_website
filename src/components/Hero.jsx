@@ -20,7 +20,7 @@ export default function Hero({ data }) {
         <span className="aurora-blob aurora-a hidden md:block h-64 w-64 bg-magenta/10 bottom-0 right-1/3" />
       </div>
 
-      <div className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(280px,340px)] lg:items-start lg:gap-12">
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(280px,340px)] lg:items-start lg:gap-12">
         <motion.div {...heroItem(0)}>
           <p className="section-label">{data.sectionLabel}</p>
 

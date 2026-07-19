@@ -68,7 +68,7 @@ export default function Contact({ data }) {
           </p>
 
           {hasContactForm ? (
-            <div className="grid gap-8 text-left md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] md:gap-10">
+            <div className="grid grid-cols-1 gap-8 text-left md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] md:gap-10">
               <div className="space-y-3">
                 <p className="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-aqua/70">
                   Direct channels
