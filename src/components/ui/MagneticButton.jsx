@@ -1,7 +1,14 @@
 import { useRef } from 'react'
 import { motion, useMotionValue, useSpring, useReducedMotion } from 'framer-motion'
 
-export default function MagneticButton({ children, href, className = '', as = 'a', strength = 0.4 }) {
+export default function MagneticButton({
+  children,
+  href,
+  className = '',
+  as = 'a',
+  strength = 0.4,
+  ...rest
+}) {
   const Component = as === 'a' ? motion.a : motion.button
   const ref = useRef(null)
   const reduceMotion = useReducedMotion()
@@ -35,6 +42,7 @@ export default function MagneticButton({ children, href, className = '', as = 'a
       whileHover={{ scale: reduceMotion ? 1 : 1.04 }}
       whileTap={{ scale: 0.97 }}
       className={`inline-flex items-center justify-center will-change-transform ${className}`}
+      {...rest}
     >
       {children}
     </Component>

@@ -60,7 +60,8 @@ a:focus-visible,
 button:focus-visible {
   outline: 2px solid #5eead4;
   outline-offset: 3px;
-  border-radius: 6px;
+  /* No border-radius here — the outline auto-follows each element's own
+     radius, so forcing a value would reshape pills/circles on focus. */
 }
 
 .sr-only {
@@ -284,6 +285,16 @@ button:focus-visible {
 
   html {
     scroll-behavior: auto;
+  }
+}
+
+/* Scroll-reveal animations gate content behind IntersectionObserver, which
+   never fires when printing/saving to PDF — force everything visible on paper. */
+@media print {
+  * {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
   }
 }
 

@@ -30,7 +30,9 @@ const socialLinks = [
   },
 ]
 
-const sectionIds = navLinks.map((link) => link.href.replace('#', ''))
+// 'intro' (the hero) is observed but has no nav link, so while it's in view no
+// link is highlighted — clearing the active state at the top and on scroll-up.
+const sectionIds = ['intro', ...navLinks.map((link) => link.href.replace('#', ''))]
 
 /**
  * Pill toggle to switch between the Software and AI/ML portfolios.
@@ -158,7 +160,7 @@ export default function Navbar({ activePortfolioKey }) {
 
         <button
           type="button"
-          className="lg:hidden text-aqua text-2xl focus:outline-none"
+          className="lg:hidden text-aqua text-2xl rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-aqua focus-visible:ring-offset-2 focus-visible:ring-offset-black"
           onClick={() => setMenuOpen((prev) => !prev)}
           aria-label="Toggle menu"
           aria-expanded={menuOpen}

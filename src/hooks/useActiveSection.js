@@ -5,7 +5,9 @@ import { useEffect, useState } from 'react'
  * navbar can highlight the active link. `ids` is an array of element ids.
  */
 export default function useActiveSection(ids, options) {
-  const [activeId, setActiveId] = useState(ids[0] ?? '')
+  // Start empty, not ids[0]: at the top of the page the hero (not in `ids`) is
+  // on screen, so no nav link should read as active until a section scrolls in.
+  const [activeId, setActiveId] = useState('')
 
   useEffect(() => {
     const elements = ids

@@ -47,6 +47,9 @@ export default function Footer({ subtitle }) {
         Designed &amp; Built by <span className="text-aqua/70">Rakesh Choudhary</span> | &copy;{' '}
         {new Date().getFullYear()}
       </p>
+      <p className="mt-2 text-offwhite/25 font-mono text-[0.65rem] tracking-wide">
+        React &middot; Vite &middot; Tailwind &middot; Framer Motion
+      </p>
     </footer>
   )
 }

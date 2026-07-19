@@ -200,11 +200,16 @@ function StatusBadge({ status }) {
   )
 }
 
-function ProjectCard({ project, index, featured = false }) {
+function ProjectCard({ project, index, featured = false, portfolioKey }) {
   const spotlight = useSpotlight()
   const accent = ACCENTS[index % ACCENTS.length]
-  const primaryLink =
-    project.links.find((link) => link.label === 'Live Demo') || project.links[0]
+
+  // Canonical per-project deep link (?project=<id>, +?type= for non-default
+  // portfolios). Matches public/sitemap.xml and feeds project-specific SEO.
+  const params = new URLSearchParams()
+  if (portfolioKey && portfolioKey !== 'software') params.set('type', portfolioKey)
+  params.set('project', project.id)
+  const projectHref = `/?${params.toString()}`
 
   return (
     <div className={`dim-item h-full ${featured ? 'md:col-span-2' : ''}`}>
@@ -238,24 +243,16 @@ function ProjectCard({ project, index, featured = false }) {
               featured ? 'text-2xl sm:text-3xl' : 'text-xl sm:text-2xl'
             }`}
           >
-            {primaryLink ? (
-              <a
-                href={primaryLink.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="no-underline text-inherit transition-colors duration-200 group-hover:text-cyan"
-              >
-                {project.title}
-                <i
-                  className="fa-solid fa-arrow-right ml-2 -rotate-45 text-sm text-offwhite/40 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-cyan"
-                  aria-hidden="true"
-                />
-              </a>
-            ) : (
-              <span className="transition-colors duration-200 group-hover:text-cyan">
-                {project.title}
-              </span>
-            )}
+            <a
+              href={projectHref}
+              className="no-underline text-inherit transition-colors duration-200 group-hover:text-cyan"
+            >
+              {project.title}
+              <i
+                className="fa-solid fa-arrow-right ml-2 text-sm text-offwhite/40 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-cyan"
+                aria-hidden="true"
+              />
+            </a>
           </h3>
 
           <p className="mt-3 text-sm sm:text-[0.95rem] text-offwhite/65 leading-relaxed">
@@ -286,7 +283,7 @@ function ProjectCard({ project, index, featured = false }) {
   )
 }
 
-export default function Projects({ data }) {
+export default function Projects({ data, portfolioKey }) {
   return (
     <section id="projects" className="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24">
       <motion.div className="max-w-2xl mb-10 md:mb-14" {...fadeUp()}>
@@ -309,6 +306,7 @@ export default function Projects({ data }) {
             project={project}
             index={index}
             featured={index === 0}
+            portfolioKey={portfolioKey}
           />
         ))}
       </div>

@@ -33,7 +33,7 @@ export default function App() {
           <Education data={portfolio.education} />
           <div className="gradient-divider" />
           <div className="section-alt">
-            <Projects data={portfolio.projects} />
+            <Projects data={portfolio.projects} portfolioKey={portfolio.key} />
           </div>
           <Contact data={portfolio.contact} />
         </main>

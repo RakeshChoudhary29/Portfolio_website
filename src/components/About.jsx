@@ -40,6 +40,7 @@ function AboutTabItem({ item, index }) {
 export default function About({ data }) {
   const tabKeys = Object.keys(data.tabs)
   const [activeTab, setActiveTab] = useState(tabKeys[0])
+  const snapshotSpotlight = useSpotlight()
 
   return (
     <section id="about" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6">
@@ -67,7 +68,7 @@ export default function About({ data }) {
               />
             </div>
 
-            <div className="spotlight-card rounded-2xl mt-6 p-5">
+            <div {...snapshotSpotlight} className="spotlight-card rounded-2xl mt-6 p-5">
               <p className="font-mono text-xs uppercase tracking-[0.14em] text-aqua/80">
                 {data.snapshotTitle}
               </p>
@@ -124,6 +125,7 @@ export default function About({ data }) {
                 <motion.button
                   key={tabKey}
                   type="button"
+                  aria-pressed={activeTab === tabKey}
                   whileTap={{ scale: 0.96 }}
                   onClick={() => setActiveTab(tabKey)}
                   className={`text-sm font-medium cursor-pointer border px-4 py-2 rounded-full transition-colors duration-200 ${

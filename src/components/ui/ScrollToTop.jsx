@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 
 export default function ScrollToTop() {
   const [visible, setVisible] = useState(false)
+  const reduceMotion = useReducedMotion()
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 600)
@@ -11,7 +12,10 @@ export default function ScrollToTop() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
+  // An explicit behavior:'smooth' overrides the reduced-motion CSS override,
+  // so branch on the preference to keep the jump instant when requested.
+  const scrollTop = () =>
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' })
 
   return (
     <AnimatePresence>

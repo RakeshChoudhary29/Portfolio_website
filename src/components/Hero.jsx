@@ -2,9 +2,12 @@ import { motion } from 'framer-motion'
 import MagneticButton from './ui/MagneticButton'
 import TiltCard from './ui/TiltCard'
 import RotatingText from './ui/RotatingText'
+import useSpotlight from '../hooks/useSpotlight'
 import { heroItem, EASE_OUT, DUR } from '../constants/motion'
 
 export default function Hero({ data }) {
+  const spotlight = useSpotlight()
+
   return (
     <section
       id="intro"
@@ -96,6 +99,7 @@ export default function Hero({ data }) {
         </motion.div>
 
         <motion.aside
+          {...spotlight}
           className="spotlight-card rounded-2xl p-5 md:p-6"
           {...heroItem(0.4)}
         >

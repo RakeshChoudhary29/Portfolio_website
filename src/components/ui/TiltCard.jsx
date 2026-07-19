@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from 'framer-motion'
 
-export default function TiltCard({ children, className = '', max = 14 }) {
+export default function TiltCard({ children, className = '', max = 14, style, ...rest }) {
   const ref = useRef(null)
   const reduceMotion = useReducedMotion()
 
@@ -28,8 +28,9 @@ export default function TiltCard({ children, className = '', max = 14 }) {
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={reset}
-      style={{ rotateX, rotateY, transformPerspective: 600, transformStyle: 'preserve-3d' }}
+      style={{ rotateX, rotateY, transformPerspective: 600, transformStyle: 'preserve-3d', ...style }}
       className={`relative w-full will-change-transform ${className}`}
+      {...rest}
     >
       {children}
     </motion.div>
