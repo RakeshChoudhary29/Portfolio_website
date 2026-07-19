@@ -2,49 +2,61 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://rakeshchoudhary.dev/</loc>
-    <lastmod>2026-03-15</lastmod>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://rakeshchoudhary.dev/?type=aiml</loc>
-    <lastmod>2026-03-15</lastmod>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://rakeshchoudhary.dev/?project=roldrive</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://rakeshchoudhary.dev/?project=dms</loc>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rakeshchoudhary.dev/?project=movie-ticket</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://rakeshchoudhary.dev/?project=mnee</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rakeshchoudhary.dev/?project=roldrive</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rakeshchoudhary.dev/?project=most-ai</loc>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://rakeshchoudhary.dev/?project=shortest-path</loc>
-    <lastmod>2026-03-15</lastmod>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rakeshchoudhary.dev/?type=aiml&amp;project=most-ai</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rakeshchoudhary.dev/?type=aiml&amp;project=expense-automation</loc>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://rakeshchoudhary.dev/?type=aiml&amp;project=titanic</loc>
-    <lastmod>2026-03-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://rakeshchoudhary.dev/?type=aiml&amp;project=analytics-dashboard</loc>
-    <lastmod>2026-03-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://rakeshchoudhary.dev/?type=aiml&amp;project=data-optimization</loc>
-    <lastmod>2026-03-15</lastmod>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

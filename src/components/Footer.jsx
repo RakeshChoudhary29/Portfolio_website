@@ -18,15 +18,15 @@ const socialLinks = [
 
 export default function Footer({ subtitle }) {
   return (
-    <footer className="bg-black text-center py-12 px-4 border-t border-white/10">
-      <p className="text-offwhite font-sans text-lg font-semibold mb-1">
+    <footer className="bg-black text-center py-10 sm:py-12 px-4 border-t border-white/8">
+      <p className="text-offwhite font-sans text-base sm:text-lg font-semibold mb-1">
         Rakesh Choudhary
       </p>
-      <p className="text-offwhite/40 font-mono text-sm mb-5">
+      <p className="text-offwhite/45 font-mono text-xs sm:text-sm mb-5">
         {subtitle}
       </p>
 
-      <ul className="flex justify-center gap-8 list-none p-0 m-0 text-2xl mb-6">
+      <ul className="flex justify-center gap-6 sm:gap-8 list-none p-0 m-0 text-xl sm:text-2xl mb-6">
         {socialLinks.map((link) => (
           <li key={link.href}>
             <a
@@ -34,7 +34,7 @@ export default function Footer({ subtitle }) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={link.label}
-              className="text-offwhite/50 hover:text-aqua transition-colors duration-200"
+              className="text-offwhite/45 hover:text-aqua transition-colors duration-200"
             >
               <i className={link.icon} aria-hidden="true" />
               <span className="sr-only">{link.label}</span>
@@ -43,8 +43,8 @@ export default function Footer({ subtitle }) {
         ))}
       </ul>
 
-      <p className="text-offwhite/30 font-mono text-xs tracking-wide">
-        Designed &amp; Built by <span className="text-aqua/60">Rakesh Choudhary</span> | &copy;{' '}
+      <p className="text-offwhite/35 font-mono text-xs tracking-wide">
+        Designed &amp; Built by <span className="text-aqua/70">Rakesh Choudhary</span> | &copy;{' '}
         {new Date().getFullYear()}
       </p>
     </footer>

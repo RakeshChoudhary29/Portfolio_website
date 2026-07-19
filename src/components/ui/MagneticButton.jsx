@@ -1,54 +1,40 @@
-import { useRef, useState } from 'react'
-import { motion, useMotionValue, useSpring } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useMotionValue, useSpring, useReducedMotion } from 'framer-motion'
 
-export default function MagneticButton({ children, href, className = "", as = "a" }) {
+export default function MagneticButton({ children, href, className = '', as = 'a', strength = 0.4 }) {
+  const Component = as === 'a' ? motion.a : motion.button
   const ref = useRef(null)
-  const [isHovered, setIsHovered] = useState(false)
+  const reduceMotion = useReducedMotion()
 
   const x = useMotionValue(0)
   const y = useMotionValue(0)
+  const springX = useSpring(x, { stiffness: 250, damping: 18, mass: 0.4 })
+  const springY = useSpring(y, { stiffness: 250, damping: 18, mass: 0.4 })
 
-  // Spring physics for snappy magnetic pull and return
-  const springConfig = { stiffness: 150, damping: 15, mass: 0.1 }
-  const mouseXSpring = useSpring(x, springConfig)
-  const mouseYSpring = useSpring(y, springConfig)
-
-  const handleMouseMove = (e) => {
-    if (!ref.current) return
+  const handleMouseMove = (event) => {
+    if (reduceMotion || !ref.current) return
     const rect = ref.current.getBoundingClientRect()
-    const width = rect.width
-    const height = rect.height
-
-    const mouseX = e.clientX - rect.left - width / 2
-    const mouseY = e.clientY - rect.top - height / 2
-
-    // Pull intensity
-    x.set(mouseX * 0.3)
-    y.set(mouseY * 0.3)
+    const relX = event.clientX - (rect.left + rect.width / 2)
+    const relY = event.clientY - (rect.top + rect.height / 2)
+    x.set(relX * strength)
+    y.set(relY * strength)
   }
 
-  const handleMouseEnter = () => setIsHovered(true)
-
-  const handleMouseLeave = () => {
-    setIsHovered(false)
+  const reset = () => {
     x.set(0)
     y.set(0)
   }
 
-  const Component = as === "a" ? motion.a : motion.button
-
   return (
     <Component
       ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
       href={href}
-      style={{
-        x: mouseXSpring,
-        y: mouseYSpring,
-      }}
-      className={`relative inline-flex items-center justify-center ${className}`}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={reset}
+      style={{ x: springX, y: springY }}
+      whileHover={{ scale: reduceMotion ? 1 : 1.04 }}
+      whileTap={{ scale: 0.97 }}
+      className={`inline-flex items-center justify-center will-change-transform ${className}`}
     >
       {children}
     </Component>

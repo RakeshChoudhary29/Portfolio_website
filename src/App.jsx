@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { getPortfolioFromSearch, getProjectFromSearch, buildMetadata } from './data/portfolios'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -9,6 +8,7 @@ import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import Seo from './components/Seo'
+import ScrollToTop from './components/ui/ScrollToTop'
 
 export default function App() {
   const search = typeof window !== 'undefined' ? window.location.search : ''
@@ -20,9 +20,7 @@ export default function App() {
   return (
     <div className="bg-black text-offwhite font-sans min-h-screen">
       <Seo metadata={metadata} />
-      <Navbar
-        activePortfolioKey={portfolio.key}
-      />
+      <Navbar activePortfolioKey={portfolio.key} />
       <main>
         <Hero data={portfolio.hero} />
         <div className="gradient-divider" />
@@ -32,12 +30,13 @@ export default function App() {
         <div className="gradient-divider" />
         <Education data={portfolio.education} />
         <div className="gradient-divider" />
-        <div className="bg-dkblue">
-          <Projects data={portfolio.projects} portfolioKey={portfolio.key} />
+        <div className="section-alt">
+          <Projects data={portfolio.projects} />
         </div>
         <Contact data={portfolio.contact} />
       </main>
       <Footer subtitle={portfolio.footerSubtitle} />
+      <ScrollToTop />
     </div>
   )
 }

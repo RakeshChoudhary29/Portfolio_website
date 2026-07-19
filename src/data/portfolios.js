@@ -1,7 +1,5 @@
 import nitwLogo from '../assets/nitw-logo.png'
 import duLogo from '../assets/du-logo.png'
-import shortestPathImg from '../assets/ShortestPath.png'
-import titanicImg from '../assets/Titanic3.jpg'
 import {
   DEFAULT_KEYWORDS,
   DEFAULT_OG_IMAGE,
@@ -40,10 +38,12 @@ const sharedExperienceItems = [
     location: 'Gurugram, India',
     period: 'Aug 2025 - Present',
     points: [
-      'Developed secure backend services for blockchain token swap and bridge workflows using Node.js and Fireblocks APIs.',
-      'Optimized API response times through caching and query optimization.',
-      'Integrated Web3 wallet authentication flows, reducing session hijacking risks across primary token swap pairs.'
+      'Building secure Node.js backend services powering blockchain token swap and bridge workflows.',
+      'Integrated Stripe payment flows with webhook-driven reconciliation for reliable transaction handling.',
+      'Shipped OpenAI-powered features into production backend services.',
+      'Deploy and operate services on AWS; reduced API response times through caching layers and query optimization.',
     ],
+    techs: ['Node.js', 'Stripe', 'OpenAI', 'AWS', 'MongoDB'],
   },
   {
     role: 'Full Stack Developer',
@@ -51,10 +51,12 @@ const sharedExperienceItems = [
     location: 'Mumbai, India',
     period: 'Sep 2024 - May 2025',
     points: [
-      'Led the development of high-performance media streaming and logistics platforms deployed across 1000+ transit vehicles.',
-      'Engineered a custom Node.js/ffmpeg media pipeline reducing stream latency.',
-      'Implemented rigorous JWT/RBAC security systems for 5+ enterprise-level admin panels.',
+      'Led client-facing delivery of media streaming and logistics platforms deployed across 1000+ transit vehicles.',
+      'Engineered a custom Node.js + ffmpeg media pipeline that cut live stream latency.',
+      'Built real-time dispatch systems on Socket.io with a geospatial-indexed ride-assignment algorithm.',
+      'Dockerized services, owned GCP deployments, and implemented JWT/RBAC security across 5+ enterprise admin panels.',
     ],
+    techs: ['Node.js', 'React', 'ffmpeg', 'Socket.io', 'Docker', 'GCP'],
   },
 ]
 
@@ -91,19 +93,19 @@ export const portfolioRegistry = {
       intro: 'Hi, my name is',
       name: 'Rakesh Choudhary',
       title: 'Full Stack Developer & Software Engineer crafting scalable web experiences.',
+      roles: ['Full Stack Developer', 'Backend Engineer', 'MERN Stack Developer', 'Problem Solver'],
       description:
         'I am a Software Engineer and Full Stack Developer working with React, Next.js, Node.js, and MongoDB to build responsive, user-focused applications with strong performance and practical UI.',
       chips: ['1.5+ years experience', 'MERN Stack', 'Node.js', 'Google Cloud Platform'],
       card: {
-        logo: nitwLogo,
-        logoAlt: 'NIT Warangal logo',
+        icon: 'fa-solid fa-terminal',
         eyebrow: 'Currently',
-        title: 'MSc Mathematics and Scientific Computing',
-        subtitle: 'NIT Warangal',
+        title: 'SDE-1 @ Monkhub Innovations',
+        subtitle: 'Backend & payment systems · Gurugram, India',
         highlights: [
-          'Responsive frontend and clean component architecture',
-          'MERN stack and Next.js development',
-          'Cloud deployment and scalable backend architecture',
+          'Node.js token swap & bridge services',
+          'Stripe payments & OpenAI integrations',
+          'AWS deployments & performance tuning',
         ],
       },
     },
@@ -114,9 +116,14 @@ export const portfolioRegistry = {
         'I am Rakesh Choudhary, a Software Engineer and Full Stack Developer with experience building scalable web applications using the MERN stack, Next.js, and Cloud Platforms. I enjoy combining strong problem-solving skills with clean, responsive interfaces and practical product thinking.',
       snapshotTitle: 'Quick Snapshot',
       snapshotItems: [
-        'Frontend-focused full stack developer',
+        'Backend-focused full stack developer',
         'MERN, Next.js, and cloud deployment',
         'Strong DSA and analytical background',
+      ],
+      stats: [
+        { value: 1.5, decimals: 1, suffix: '+', label: 'Years Experience' },
+        { value: 988, suffix: '+', label: 'LeetCode Problems' },
+        { value: 852, suffix: '+', label: 'GFG Problems' },
       ],
       tabs: {
         skills: {
@@ -138,6 +145,22 @@ export const portfolioRegistry = {
               title: 'Programming Languages',
               value: 'JavaScript | TypeScript | Python | C++ | SQL',
             },
+            {
+              title: 'AI & LLM Integrations',
+              value: 'OpenAI API | LangChain | Gemini | Prompt Engineering',
+            },
+            {
+              title: 'System Design',
+              value: 'Microservices | REST APIs | WebSockets | Caching | Webhooks',
+            },
+            {
+              title: 'DevOps & Deployment',
+              value: 'Docker | CI/CD | GitHub Actions | GCP | AWS',
+            },
+            {
+              title: 'Payments & Integrations',
+              value: 'Stripe | Payment Webhooks | Third-party APIs',
+            },
           ],
         },
         coding: {
@@ -145,12 +168,12 @@ export const portfolioRegistry = {
           items: [
             {
               title: 'GeeksForGeeks',
-              value: 'Top 100 institute rank | Solved 534+ problems',
+              value: 'Top 100 institute rank | 852+ problems solved',
               href: 'https://auth.geeksforgeeks.org/user/rakeshthnb9s',
             },
             {
               title: 'LeetCode',
-              value: 'Solved 400+ Data Structures problems',
+              value: '988+ DSA problems solved',
               href: 'https://leetcode.com/RakeshChoudhary29/',
             },
             {
@@ -180,40 +203,47 @@ export const portfolioRegistry = {
           label: 'Featured Project',
           title: 'Device Management System (DMS)',
           description:
-            'Developed a high-concurrency Node.js streaming pipeline scaling across transit vehicle camera networks. Reverse-engineered proprietary camera network protocols and captured feeds with audio via ffmpeg, buffering streams in RAM.',
+            'Architected a high-concurrency Node.js streaming pipeline serving live camera feeds from 1000+ transit vehicles. Reverse-engineered proprietary camera network protocols, captured synchronized audio/video through a custom ffmpeg pipeline with in-memory stream buffering for low-latency playback, and shipped the system as Dockerized services on GCP.',
           links: [],
           techs: ['Node.js', 'Docker', 'GCP', 'ffmpeg', 'MongoDB'],
-          placeholder: 'DMS',
-          reverse: false,
+          status: 'In Production',
         },
         {
           id: 'mnee',
           label: 'Featured Project',
           title: 'MNEE - Blockchain Token Platform',
           description:
-            'Constructed a backend transaction pipeline integrating Fireblocks and 0x API, supporting quote routing across smart contract tokens. Integrated Google reCAPTCHA Enterprise on staging endpoints to prevent automated transaction abuse.',
+            'Constructed the backend transaction pipeline for a live blockchain token platform, integrating Fireblocks custody and the 0x API for quote routing across smart-contract tokens. Hardened endpoints with Google reCAPTCHA Enterprise to block automated transaction abuse and secured primary swap pairs with wallet-based authentication.',
           links: [],
           techs: ['Node.js', 'React.js', 'Fireblocks', '0x API'],
-          placeholder: 'MNE',
-          reverse: true,
+          status: 'Live Platform',
         },
         {
           id: 'roldrive',
           label: 'Featured Project',
           title: 'RolDrive Ride Booking',
           description:
-            'Created real-time dispatch systems using Socket.io and designed a high-performance geospatial indexing ride assignment algorithm. Built an internal admin platform with JWT/RBAC security for end-to-end operational workflows.',
+            'Designed real-time ride dispatch on Socket.io backed by a geospatial-indexed assignment algorithm that matches drivers to bookings at scale. Built the internal admin platform with JWT/RBAC authorization covering booking, driver, and fleet operations end to end.',
           links: [],
           techs: ['React', 'Node.js', 'Socket.io', 'MongoDB'],
-          placeholder: 'RD',
-          reverse: false,
+          status: 'In Production',
+        },
+        {
+          id: 'most-ai',
+          label: 'AI Platform',
+          title: 'MOST - Hospitality AI Platform',
+          description:
+            'Architected an AI recommendation engine using LangChain and OpenAI to improve dynamic response generation. Designed modular NestJS services for scalable AI travel workflows and deployed robust communication pipelines using AWS S3, SES, and SNS.',
+          links: [],
+          techs: ['NestJS', 'LangChain', 'OpenAI', 'AWS', 'MongoDB'],
+          status: 'Client Project',
         },
         {
           id: 'shortest-path',
           label: 'Featured Project',
           title: 'Shortest Path Visualizer',
           description:
-            'Created an interactive graph visualizer to demonstrate Dijkstra shortest path computation with dynamic node and edge editing. The tool helps users understand how pathfinding works step by step through a hands-on interface.',
+            "Interactive pathfinding visualizer implementing Dijkstra's algorithm on a fully editable graph — add weighted nodes and edges, then watch the algorithm expand its frontier step by step. Written in vanilla JavaScript on HTML Canvas with zero frameworks.",
           links: [
             {
               url: 'https://github.com/RakeshChoudhary29/Shortest-Path',
@@ -227,9 +257,6 @@ export const portfolioRegistry = {
             },
           ],
           techs: ['HTML Canvas', 'CSS', 'JavaScript'],
-          image: shortestPathImg,
-          imageAlt: 'Rakesh Choudhary Software Engineer - Shortest Path Visualizer Tool',
-          reverse: true,
         },
       ],
     },
@@ -264,19 +291,19 @@ export const portfolioRegistry = {
       intro: 'Hi, my name is',
       name: 'Rakesh Choudhary',
       title: 'AI/ML and data-focused engineer building insight-driven systems.',
+      roles: ['AI Workflow Engineer', 'LLM Integration Developer', 'Automation Builder', 'Data Engineer'],
       description:
         'I work with modern AI frameworks like LangChain, OpenAI APIs, and automation workflows to build intelligent backend services and data-centric applications.',
       chips: ['AI/LLM Workflows', 'Automation Workflows', 'Data Engineering'],
       card: {
-        logo: nitwLogo,
-        logoAlt: 'NIT Warangal logo',
-        eyebrow: 'Focus Area',
-        title: 'AI / ML and Data Engineering',
-        subtitle: 'Applied analytics, LLM workflows, and model-oriented thinking',
+        icon: 'fa-solid fa-robot',
+        eyebrow: 'Currently',
+        title: 'SDE-1 @ Monkhub Innovations',
+        subtitle: 'AI workflows & backend systems · Gurugram, India',
         highlights: [
-          'Python, LangChain, and API-driven problem solving',
-          'Prompt Engineering and AI service integrations',
-          'Data modeling, pipelines, and automation',
+          'OpenAI-powered production backend features',
+          'LangChain and LLM workflow engineering',
+          'Data pipelines, automation, and AWS',
         ],
       },
     },
@@ -290,6 +317,11 @@ export const portfolioRegistry = {
         'AI workflow engineering mindset',
         'LangChain, Prompt Engineering, and APIs',
         'Strong math and problem solving foundation',
+      ],
+      stats: [
+        { value: 1.5, decimals: 1, suffix: '+', label: 'Years Experience' },
+        { value: 988, suffix: '+', label: 'LeetCode Problems' },
+        { value: 852, suffix: '+', label: 'GFG Problems' },
       ],
       tabs: {
         skills: {
@@ -318,12 +350,12 @@ export const portfolioRegistry = {
           items: [
             {
               title: 'GeeksForGeeks',
-              value: 'Top 100 institute rank | Solved 534+ problems',
+              value: 'Top 100 institute rank | 852+ problems solved',
               href: 'https://auth.geeksforgeeks.org/user/rakeshthnb9s',
             },
             {
               title: 'LeetCode',
-              value: 'Solved 400+ Data Structures problems',
+              value: '988+ DSA problems solved',
               href: 'https://leetcode.com/RakeshChoudhary29/',
             },
             {
@@ -353,22 +385,20 @@ export const portfolioRegistry = {
           label: 'Featured Project',
           title: 'MOST - Hospitality AI Platform',
           description:
-            'Architected an AI recommendation engine using LangChain and OpenAI, improving dynamic response generation. Designed modular NestJS services for scalable AI travel workflows and deployed robust communication workflows utilizing AWS S3, SES, and SNS.',
+            'Architected an AI recommendation engine with LangChain and OpenAI that powers dynamic, context-aware responses for hospitality workflows. Designed modular NestJS microservices for scalable AI travel pipelines and deployed transactional communication infrastructure on AWS S3, SES, and SNS.',
           links: [],
           techs: ['NestJS', 'LangChain', 'OpenAI', 'AWS', 'MongoDB'],
-          placeholder: 'AI',
-          reverse: false,
+          status: 'Client Project',
         },
         {
           id: 'expense-automation',
-          label: 'Applied Work',
-          title: 'Expense Tracker Automation',
+          label: 'AI Automation',
+          title: 'AI Expense Tracker Automation',
           description:
-            'Developed a Telegram bot using Gemini AI to parse receipts into structured Google Sheets via n8n. Fully automated financial tracking by parsing unstructured images and text into structured data with high accuracy.',
+            'Built a fully serverless expense-tracking automation: a Telegram bot pipes receipt images and text to Google Gemini, which parses them into structured Google Sheets rows through n8n workflows. Deployed n8n on Hugging Face Spaces (Docker) with a Cloudflare Worker proxying inbound webhooks and a cron ping keeping the free Space awake 24/7, plus a dedicated error-handler workflow with automatic retries.',
           links: [],
-          techs: ['n8n', 'Gemini API', 'Telegram API', 'Docker'],
-          placeholder: 'BOT',
-          reverse: true,
+          techs: ['n8n', 'Gemini API', 'Telegram API', 'Cloudflare Workers', 'Docker'],
+          status: 'Running 24/7',
         },
         {
           id: 'titanic',
@@ -384,9 +414,6 @@ export const portfolioRegistry = {
             },
           ],
           techs: ['Python', 'Pandas', 'Visualization', 'Statistics'],
-          image: titanicImg,
-          imageAlt: 'Rakesh Choudhary Data Engineer - Titanic Survival Analysis Project',
-          reverse: false,
         },
       ],
     },
