@@ -6,6 +6,11 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Anchor targets stop below the sticky navbar instead of underneath it */
+section[id] {
+  scroll-margin-top: 4.5rem;
+}
+
 *,
 *::before,
 *::after {

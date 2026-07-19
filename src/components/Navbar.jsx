@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion'
+import { motion, useScroll, useSpring } from 'framer-motion'
 import { CONTACT_EMAIL, SOCIAL_LINKS, getResumeUrl } from '../constants/site'
 import { getPortfolioOptions } from '../data/portfolios'
 import useActiveSection from '../hooks/useActiveSection'
@@ -36,8 +36,11 @@ const sectionIds = ['intro', ...navLinks.map((link) => link.href.replace('#', ''
 
 /**
  * Pill toggle to switch between the Software and AI/ML portfolios.
- * Dev-only: recruiters get a direct URL per portfolio, so production hides
- * the switch (the ?type= query param itself keeps working everywhere).
+ *
+ * TESTING ONLY — this control never ships to production. `import.meta.env.DEV`
+ * is a compile-time flag, so `npm run build` drops the component entirely;
+ * production visitors reach the AI/ML portfolio only via a direct `?type=aiml`
+ * URL (the query param itself keeps working everywhere).
  */
 function PortfolioSwitcher({ activePortfolioKey, className = '' }) {
   if (!import.meta.env.DEV) return null
@@ -98,6 +101,7 @@ export default function Navbar({ activePortfolioKey }) {
             </span>
             <span className="truncate">Rakesh Choudhary</span>
           </a>
+          {/* Testing-only portfolio toggle — renders null in production builds */}
           <PortfolioSwitcher
             activePortfolioKey={activePortfolioKey}
             className="hidden md:inline-flex"
@@ -169,17 +173,19 @@ export default function Navbar({ activePortfolioKey }) {
         </button>
       </nav>
 
-      <AnimatePresence>
-        {menuOpen && (
+      {/* The menu must close INSTANTLY (no AnimatePresence exit) and overlay the
+          page (absolute, not in-flow): Chrome cancels an in-flight smooth anchor
+          scroll when layout shifts or an exit animation runs mid-scroll, which
+          made mobile nav links not navigate at all. */}
+      {menuOpen && (
           <motion.div
-            key="mobile-menu"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="lg:hidden overflow-hidden bg-surface border-t border-white/8"
+            className="lg:hidden absolute top-full inset-x-0 overflow-hidden bg-surface border-t border-white/8 shadow-2xl shadow-black/50"
           >
             <ul className="flex flex-col gap-4 list-none p-0 m-0 px-6 pb-6 pt-4">
+            {/* Testing-only portfolio toggle — never rendered in production builds */}
             {import.meta.env.DEV && (
               <li>
                 <PortfolioSwitcher activePortfolioKey={activePortfolioKey} />
@@ -233,8 +239,7 @@ export default function Navbar({ activePortfolioKey }) {
             </li>
             </ul>
           </motion.div>
-        )}
-      </AnimatePresence>
+      )}
 
       <motion.div
         aria-hidden="true"
