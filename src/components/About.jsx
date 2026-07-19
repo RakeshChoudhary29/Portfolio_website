@@ -50,9 +50,9 @@ export default function About({ data }) {
           {data.sectionLabel}
         </p>
 
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-[minmax(0,300px)_minmax(0,1fr)] md:gap-12 lg:gap-14 items-start">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,300px)_minmax(0,1fr)] md:gap-12 lg:gap-14 items-start">
           <motion.div
-            className="w-full max-w-xs mx-auto md:max-w-none"
+            className="w-full"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
