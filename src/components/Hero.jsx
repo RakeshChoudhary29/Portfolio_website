@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion'
 import MagneticButton from './ui/MagneticButton'
 import TiltCard from './ui/TiltCard'
-import Typewriter from './ui/Typewriter'
+import RotatingText from './ui/RotatingText'
+import { heroItem, EASE_OUT, DUR } from '../constants/motion'
 
 export default function Hero({ data }) {
   return (
@@ -17,43 +18,36 @@ export default function Hero({ data }) {
       </div>
 
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(280px,340px)] lg:items-start lg:gap-12">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
-        >
+        <motion.div {...heroItem(0)}>
           <p className="section-label">{data.sectionLabel}</p>
 
           <motion.p
             className="font-mono text-offwhite/60 text-sm sm:text-base mb-3"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.15, duration: 0.4 }}
+            transition={{ delay: 0.15, duration: 0.4, ease: EASE_OUT }}
           >
             {data.intro}
           </motion.p>
 
           <motion.h1
-            className="font-sans text-offwhite text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 leading-[1.1]"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
+            className="font-display text-fluid-hero font-bold mb-4"
+            {...heroItem(0.2)}
           >
             <span className="text-gradient-animated">{data.name}</span>
           </motion.h1>
 
           <motion.p
-            className="text-offwhite text-xl sm:text-2xl md:text-3xl font-semibold leading-snug max-w-2xl mb-5"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
+            className="text-offwhite text-fluid-lead font-semibold max-w-2xl mb-5"
+            {...heroItem(0.3)}
           >
             {data.roles ? (
-              <span className="font-mono">
-                <span className="text-aqua select-none" aria-hidden="true">
-                  {'> '}
-                </span>
-                <Typewriter words={data.roles} className="text-offwhite" />
+              <span className="font-display inline-flex items-center">
+                <span
+                  aria-hidden="true"
+                  className="mr-3 inline-block h-[1.05em] w-1 flex-shrink-0 rounded-full bg-gradient-to-b from-aqua to-cyan"
+                />
+                <RotatingText words={data.roles} />
               </span>
             ) : (
               data.title
@@ -62,19 +56,12 @@ export default function Hero({ data }) {
 
           <motion.p
             className="text-offwhite/65 text-base sm:text-lg leading-relaxed max-w-3xl mb-8"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
+            {...heroItem(0.4)}
           >
             {data.description}
           </motion.p>
 
-          <motion.div
-            className="flex flex-wrap gap-3 sm:gap-4"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.5 }}
-          >
+          <motion.div className="flex flex-wrap gap-3 sm:gap-4" {...heroItem(0.5)}>
             <MagneticButton
               href="#projects"
               className="cta-glow bg-cyan text-black hover:bg-cyan/90 font-mono px-6 sm:px-7 py-2.5 sm:py-3 rounded-full no-underline text-sm sm:text-base font-semibold"
@@ -82,19 +69,20 @@ export default function Hero({ data }) {
               View Projects
               <i className="fa-solid fa-arrow-right ml-2 text-sm" aria-hidden="true" />
             </MagneticButton>
-            <a
+            <motion.a
               href="#contact"
+              whileTap={{ scale: 0.97 }}
               className="btn-outline-premium border border-white/15 text-offwhite hover:border-aqua/40 hover:text-aqua font-mono px-6 sm:px-7 py-2.5 sm:py-3 rounded-full inline-flex items-center no-underline text-sm sm:text-base"
             >
               Get In Touch
-            </a>
+            </motion.a>
           </motion.div>
 
           <motion.div
             className="mt-8 flex flex-wrap gap-2.5"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.65, duration: 0.5 }}
+            transition={{ delay: 0.65, duration: DUR.hero, ease: EASE_OUT }}
           >
             {data.chips.map((chip) => (
               <span
@@ -109,16 +97,14 @@ export default function Hero({ data }) {
 
         <motion.aside
           className="spotlight-card rounded-2xl p-5 md:p-6"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.5, ease: 'easeOut' }}
+          {...heroItem(0.4)}
         >
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <TiltCard>
-              <div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-xl bg-surface-elevated p-2 border border-white/10">
+              <div className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-surface-elevated p-2 border border-white/10">
                 {data.card.icon ? (
                   <i
-                    className={`${data.card.icon} text-aqua text-xl sm:text-2xl`}
+                    className={`${data.card.icon} text-aqua text-lg sm:text-xl`}
                     aria-hidden="true"
                   />
                 ) : (
@@ -131,18 +117,18 @@ export default function Hero({ data }) {
                 )}
               </div>
             </TiltCard>
-            <div className="min-w-0">
-              <p className="font-mono text-[0.7rem] sm:text-xs uppercase tracking-[0.14em] text-aqua/80">
-                {data.card.eyebrow}
-              </p>
-              <p className="text-offwhite text-sm sm:text-base font-semibold leading-snug">
-                {data.card.title}
-              </p>
-              <p className="text-offwhite/55 text-xs sm:text-sm mt-1">
-                {data.card.subtitle}
-              </p>
-            </div>
+            <p className="flex items-center gap-2 font-mono text-[0.7rem] sm:text-xs uppercase tracking-[0.14em] text-aqua/80">
+              <span className="h-1.5 w-1.5 rounded-full bg-aqua animate-pulse" aria-hidden="true" />
+              {data.card.eyebrow}
+            </p>
           </div>
+
+          <p className="mt-4 text-offwhite text-base sm:text-lg font-semibold leading-snug">
+            {data.card.title}
+          </p>
+          <p className="text-offwhite/55 text-xs sm:text-sm mt-1">
+            {data.card.subtitle}
+          </p>
 
           <div className="mt-5 space-y-2.5">
             {data.card.highlights.map((item) => (
@@ -161,7 +147,7 @@ export default function Hero({ data }) {
       <motion.a
         href="#about"
         aria-label="Scroll to about section"
-        className="hidden md:flex mx-auto mt-14 w-fit flex-col items-center gap-2 text-offwhite/40 hover:text-aqua transition-colors duration-200 no-underline"
+        className="hidden md:flex mx-auto mt-8 w-fit flex-col items-center gap-2 text-offwhite/40 hover:text-aqua transition-colors duration-200 no-underline"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.9, duration: 0.5 }}

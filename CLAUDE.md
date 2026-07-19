@@ -36,6 +36,18 @@ This is a static SPA, so all meta tags are injected at runtime. `buildMetadata(p
 - Reusable interaction components are in `src/components/ui/`: `MagneticButton`, `TiltCard`, `SpotlightCard`, `ScrollToTop`.
 - Hooks in `src/hooks/`: `useActiveSection` (IntersectionObserver-driven navbar highlighting) and `useSpotlight` (cursor-following radial glow — returns props to spread onto an element with the `.spotlight-card` class).
 
+### Contact form
+
+`src/components/ContactForm.jsx` posts to Web3Forms using `VITE_WEB3FORMS_KEY` (see `.env.example`; the key is public-safe). When the env var is absent, `Contact.jsx` hides the form and falls back to direct email/LinkedIn buttons — so the site works with or without it.
+
+### Motion & type tokens
+
+- Shared Framer Motion tokens (easing, durations, `fadeUp`/`heroItem` variant helpers) live in `src/constants/motion.js` — use them instead of ad-hoc `transition` objects.
+- Fluid heading sizes are Tailwind tokens (`text-fluid-hero`, `text-fluid-h2`, `text-fluid-lead`) defined in `tailwind.config.js`; section `h2`s use `font-display text-fluid-h2`.
+- Project cards render a CSS-drawn "app window" mockup (`ProjectVisual` in `Projects.jsx`); the skeleton style comes from each project's optional `visual` field in `portfolios.js` (`dashboard | stream | chart | terminal | graph`), and an optional `image` field replaces the skeleton with a real screenshot. The first project in each portfolio renders as a full-width "flagship" card (visual left, content right); order the `projects.items` array accordingly.
+- Gotcha: `.spotlight-card > *` in `index.css` forces `position: relative` on direct card children (to sit above the glow pseudo-element) and it loads after Tailwind utilities — a plain `absolute` class on a direct child silently loses. Use `!absolute` inside spotlight cards.
+- `MotionConfig reducedMotion="user"` wraps the app in `App.jsx`; CSS-only animations are additionally gated in `src/index.css`.
+
 ### Notes
 
 - Static assets served from `public/` (favicons, `og-banner.png`, `sitemap.xml`, `resume/<key>/resume.pdf`); imported image assets live in `src/assets/`. When project ids change, update `public/sitemap.xml` to match.

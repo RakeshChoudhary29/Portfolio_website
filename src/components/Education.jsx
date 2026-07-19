@@ -62,7 +62,7 @@ export default function Education({ data }) {
             <span className="text-offwhite/30 mr-2">03.</span>
             {data.sectionLabel}
           </p>
-          <h2 className="text-offwhite text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+          <h2 className="text-offwhite font-display text-fluid-h2 font-bold">
             {data.title}
           </h2>
           <p className="text-offwhite/60 text-base md:text-lg mt-4 leading-relaxed">

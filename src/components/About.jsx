@@ -91,7 +91,7 @@ export default function About({ data }) {
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <h2 className="text-offwhite text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight">
+            <h2 className="text-offwhite font-display text-fluid-h2 font-bold mb-4">
               {data.title}
             </h2>
             <p className="text-offwhite/65 leading-relaxed mb-7 text-base sm:text-lg max-w-3xl">
@@ -121,9 +121,10 @@ export default function About({ data }) {
 
             <div className="flex flex-wrap gap-2.5 mb-7">
               {tabKeys.map((tabKey) => (
-                <button
+                <motion.button
                   key={tabKey}
                   type="button"
+                  whileTap={{ scale: 0.96 }}
                   onClick={() => setActiveTab(tabKey)}
                   className={`text-sm font-medium cursor-pointer border px-4 py-2 rounded-full transition-colors duration-200 ${
                     activeTab === tabKey
@@ -132,7 +133,7 @@ export default function About({ data }) {
                   }`}
                 >
                   {data.tabs[tabKey].label}
-                </button>
+                </motion.button>
               ))}
             </div>
 

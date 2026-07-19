@@ -1,3 +1,4 @@
+import { MotionConfig } from 'framer-motion'
 import { getPortfolioFromSearch, getProjectFromSearch, buildMetadata } from './data/portfolios'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -18,25 +19,27 @@ export default function App() {
   const metadata = buildMetadata(portfolio, project)
 
   return (
-    <div className="bg-black text-offwhite font-sans min-h-screen">
-      <Seo metadata={metadata} />
-      <Navbar activePortfolioKey={portfolio.key} />
-      <main>
-        <Hero data={portfolio.hero} />
-        <div className="gradient-divider" />
-        <About data={portfolio.about} />
-        <div className="gradient-divider" />
-        <Experience data={portfolio.experience} />
-        <div className="gradient-divider" />
-        <Education data={portfolio.education} />
-        <div className="gradient-divider" />
-        <div className="section-alt">
-          <Projects data={portfolio.projects} />
-        </div>
-        <Contact data={portfolio.contact} />
-      </main>
-      <Footer subtitle={portfolio.footerSubtitle} />
-      <ScrollToTop />
-    </div>
+    <MotionConfig reducedMotion="user">
+      <div className="bg-black text-offwhite font-sans min-h-screen">
+        <Seo metadata={metadata} />
+        <Navbar activePortfolioKey={portfolio.key} />
+        <main>
+          <Hero data={portfolio.hero} />
+          <div className="gradient-divider" />
+          <About data={portfolio.about} />
+          <div className="gradient-divider" />
+          <Experience data={portfolio.experience} />
+          <div className="gradient-divider" />
+          <Education data={portfolio.education} />
+          <div className="gradient-divider" />
+          <div className="section-alt">
+            <Projects data={portfolio.projects} />
+          </div>
+          <Contact data={portfolio.contact} />
+        </main>
+        <Footer subtitle={portfolio.footerSubtitle} />
+        <ScrollToTop />
+      </div>
+    </MotionConfig>
   )
 }

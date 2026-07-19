@@ -130,36 +130,20 @@ export const portfolioRegistry = {
           label: 'Skills',
           items: [
             {
-              title: 'Frontend Development',
-              value: 'React.js | Next.js | JavaScript ES6+ | TypeScript | Redux Toolkit | Tailwind CSS',
+              title: 'Frontend',
+              value: 'React.js | Next.js | TypeScript | Redux Toolkit | Tailwind CSS',
             },
             {
-              title: 'Backend Development',
-              value: 'Node.js | Express.js | REST APIs | JWT | Socket.io | Microservices',
+              title: 'Backend & System Design',
+              value: 'Node.js | Express.js | REST APIs | Socket.io | Microservices | Caching',
             },
             {
-              title: 'Databases and Cloud',
-              value: 'MongoDB | MySQL | Redis | GCP | AWS | Docker',
+              title: 'Databases, Cloud & DevOps',
+              value: 'MongoDB | MySQL | Redis | Docker | CI/CD | GCP | AWS',
             },
             {
-              title: 'Programming Languages',
-              value: 'JavaScript | TypeScript | Python | C++ | SQL',
-            },
-            {
-              title: 'AI & LLM Integrations',
-              value: 'OpenAI API | LangChain | Gemini | Prompt Engineering',
-            },
-            {
-              title: 'System Design',
-              value: 'Microservices | REST APIs | WebSockets | Caching | Webhooks',
-            },
-            {
-              title: 'DevOps & Deployment',
-              value: 'Docker | CI/CD | GitHub Actions | GCP | AWS',
-            },
-            {
-              title: 'Payments & Integrations',
-              value: 'Stripe | Payment Webhooks | Third-party APIs',
+              title: 'AI & Integrations',
+              value: 'OpenAI API | LangChain | Gemini | Stripe | Payment Webhooks',
             },
           ],
         },
@@ -200,6 +184,7 @@ export const portfolioRegistry = {
       items: [
         {
           id: 'dms',
+          visual: 'stream',
           label: 'Featured Project',
           title: 'Device Management System (DMS)',
           description:
@@ -210,6 +195,7 @@ export const portfolioRegistry = {
         },
         {
           id: 'mnee',
+          visual: 'chart',
           label: 'Featured Project',
           title: 'MNEE - Blockchain Token Platform',
           description:
@@ -220,6 +206,7 @@ export const portfolioRegistry = {
         },
         {
           id: 'roldrive',
+          visual: 'dashboard',
           label: 'Featured Project',
           title: 'RolDrive Ride Booking',
           description:
@@ -230,6 +217,7 @@ export const portfolioRegistry = {
         },
         {
           id: 'most-ai',
+          visual: 'terminal',
           label: 'AI Platform',
           title: 'MOST - Hospitality AI Platform',
           description:
@@ -240,6 +228,7 @@ export const portfolioRegistry = {
         },
         {
           id: 'shortest-path',
+          visual: 'graph',
           label: 'Featured Project',
           title: 'Shortest Path Visualizer',
           description:
@@ -382,6 +371,7 @@ export const portfolioRegistry = {
       items: [
         {
           id: 'most-ai',
+          visual: 'terminal',
           label: 'Featured Project',
           title: 'MOST - Hospitality AI Platform',
           description:
@@ -392,6 +382,7 @@ export const portfolioRegistry = {
         },
         {
           id: 'expense-automation',
+          visual: 'dashboard',
           label: 'AI Automation',
           title: 'AI Expense Tracker Automation',
           description:
@@ -402,6 +393,7 @@ export const portfolioRegistry = {
         },
         {
           id: 'titanic',
+          visual: 'chart',
           label: 'Data Project',
           title: 'Titanic Survival Analysis',
           description:

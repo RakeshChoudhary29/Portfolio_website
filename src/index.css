@@ -63,22 +63,6 @@ button:focus-visible {
   border-radius: 6px;
 }
 
-/* ---- Typewriter caret ---- */
-.typewriter-caret {
-  display: inline-block;
-  width: 3px;
-  height: 1em;
-  margin-left: 4px;
-  vertical-align: -0.1em;
-  background: #5eead4;
-  animation: caretBlink 1s step-end infinite;
-}
-
-@keyframes caretBlink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
 .sr-only {
   position: absolute;
   width: 1px;
@@ -258,6 +242,19 @@ button:focus-visible {
   100% { background-position: 300% 50%; }
 }
 
+/* ---- Sibling dimming: hovered card stays bright, the rest recede ----
+   Applied to a wrapper (not the motion element) so Framer's inline opacity
+   doesn't override it. Pointer devices only. */
+@media (hover: hover) and (pointer: fine) {
+  .dim-item {
+    transition: opacity 0.3s ease;
+  }
+
+  .dim-siblings:hover .dim-item:not(:hover) {
+    opacity: 0.55;
+  }
+}
+
 /* ---- Scroll progress bar under the navbar ---- */
 .scroll-progress {
   transform-origin: 0% 50%;
@@ -277,7 +274,6 @@ button:focus-visible {
   .aurora-b,
   .text-gradient-animated,
   .scroll-cue,
-  .typewriter-caret,
   .animate-pulse {
     animation: none !important;
   }
