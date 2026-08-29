@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import profilePhoto from '../assets/user.jpg'
+import profilePhoto from '../assets/user.webp'
 import useSpotlight from '../hooks/useSpotlight'
 import CountUp from './ui/CountUp'
 import SectionHeader from './SectionHeader'
+import TechChips from './TechChips'
+import Icon from './ui/Icon'
 
 function AboutTabItem({ item, index }) {
   const spotlight = useSpotlight()
@@ -18,9 +20,13 @@ function AboutTabItem({ item, index }) {
       className="spotlight-card rounded-2xl p-4 sm:p-5 h-full"
     >
       <div className="flex items-start justify-between gap-3">
-        <div>
+        <div className="min-w-0">
           <h3 className="text-cyan font-semibold text-sm sm:text-base">{item.title}</h3>
-          <p className="text-offwhite/65 mt-2.5 leading-7 text-sm sm:text-base">{item.value}</p>
+          {item.items ? (
+            <TechChips items={item.items} />
+          ) : (
+            <p className="text-offwhite/65 mt-2.5 leading-7 text-sm sm:text-base">{item.value}</p>
+          )}
         </div>
         {item.href ? (
           <a
@@ -30,7 +36,7 @@ function AboutTabItem({ item, index }) {
             className="text-aqua hover:text-cyan transition-colors duration-200 no-underline mt-0.5 flex-shrink-0"
             aria-label={`Visit ${item.title}`}
           >
-            <i className="fa-solid fa-arrow-up-right-from-square text-sm" aria-hidden="true" />
+            <Icon name="external-link" size={15} />
           </a>
         ) : null}
       </div>
@@ -44,13 +50,21 @@ export default function About({ data }) {
   const snapshotSpotlight = useSpotlight()
 
   return (
-    <section id="about" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6">
+    <section id="about" className="py-16 sm:py-20 md:pt-24 md:pb-32 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
-        <SectionHeader index={1} label={data.sectionLabel} />
+        {/* The h2 sits above the grid (not inside the text column) so it stays
+            with its eyebrow on mobile instead of landing a screen below the
+            photo — and so About's header matches every other section. */}
+        <SectionHeader
+          index={1}
+          label={data.sectionLabel}
+          title={data.title}
+          className="mb-8 md:mb-10"
+        />
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,300px)_minmax(0,1fr)] md:gap-12 lg:gap-14 items-start">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,300px)_minmax(0,1fr)] md:grid-rows-[auto_1fr] md:gap-x-12 lg:gap-x-14 md:gap-y-6 content-start">
           <motion.div
-            className="w-full"
+            className="w-full md:col-start-1 md:row-start-1"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
@@ -61,38 +75,46 @@ export default function About({ data }) {
               <img
                 src={profilePhoto}
                 alt="Rakesh Choudhary"
+                width={800}
+                height={1000}
                 className="w-full object-cover aspect-[4/5] transition-transform duration-500 ease-out group-hover:scale-105"
                 loading="lazy"
               />
             </div>
+          </motion.div>
 
-            <div {...snapshotSpotlight} className="spotlight-card rounded-2xl mt-6 p-5">
-              <p className="font-mono text-xs uppercase tracking-[0.14em] text-aqua/80">
-                {data.snapshotTitle}
-              </p>
-              <div className="mt-4 space-y-2.5">
-                {data.snapshotItems.map((item) => (
-                  <div
-                    key={item}
-                    className="rounded-xl border border-white/8 bg-surface-elevated px-3.5 py-3"
-                  >
-                    <p className="text-offwhite font-medium text-sm">{item}</p>
-                  </div>
-                ))}
-              </div>
+          {/* Snapshot is its own grid child so it can trail the bio on mobile
+              while still stacking under the photo in the left column at md+. */}
+          <motion.div
+            {...snapshotSpotlight}
+            className="spotlight-card rounded-2xl p-5 order-last md:order-none md:col-start-1 md:row-start-2"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+          >
+            <p className="font-mono text-xs uppercase tracking-[0.14em] text-aqua/80">
+              {data.snapshotTitle}
+            </p>
+            <div className="mt-4 space-y-2.5">
+              {data.snapshotItems.map((item) => (
+                <div
+                  key={item}
+                  className="rounded-xl border border-white/8 bg-surface-elevated px-3.5 py-3"
+                >
+                  <p className="text-offwhite font-medium text-sm">{item}</p>
+                </div>
+              ))}
             </div>
           </motion.div>
 
           <motion.div
-            className="w-full"
+            className="w-full md:col-start-2 md:row-start-1 md:row-span-2"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <h2 className="text-offwhite font-display text-fluid-h2 font-bold mb-4">
-              {data.title}
-            </h2>
             <p className="text-offwhite/65 leading-relaxed mb-7 text-base sm:text-lg max-w-3xl">
               {data.description}
             </p>
@@ -144,7 +166,7 @@ export default function About({ data }) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.2 }}
-                className="grid grid-cols-1 gap-3 sm:grid-cols-2"
+                className="grid grid-cols-1 gap-3 lg:grid-cols-2"
               >
                 {data.tabs[activeTab].items.map((item, index) => (
                   <AboutTabItem key={item.title} item={item} index={index} />

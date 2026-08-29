@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import Icon from './Icon'
 
 export default function ScrollToTop() {
   const [visible, setVisible] = useState(false)
@@ -32,7 +33,7 @@ export default function ScrollToTop() {
           transition={{ duration: 0.2 }}
           className="fixed bottom-5 right-5 sm:bottom-8 sm:right-8 z-50 flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-cyan text-black shadow-lg shadow-cyan/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-aqua focus-visible:ring-offset-2 focus-visible:ring-offset-black"
         >
-          <i className="fa-solid fa-arrow-up text-base sm:text-lg" aria-hidden="true" />
+          <Icon name="arrow-up" size={18} />
         </motion.button>
       )}
     </AnimatePresence>

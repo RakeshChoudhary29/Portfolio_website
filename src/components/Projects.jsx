@@ -4,6 +4,7 @@ import { fadeUp } from '../constants/motion'
 import { getProjectSearch } from '../data/portfolios'
 import SectionHeader from './SectionHeader'
 import TechChips from './TechChips'
+import Icon from './ui/Icon'
 
 // Accent colors cycle per card so each has its own identity without needing images.
 const ACCENTS = [
@@ -42,7 +43,7 @@ function SkeletonStream({ accent }) {
       <div className="relative grid flex-1 place-items-center rounded-md bg-white/[0.05]">
         <span className="absolute left-2 top-2 h-1.5 w-10 rounded-full bg-white/10" />
         <span className={`grid h-9 w-9 place-items-center rounded-full ${accent.soft}`}>
-          <i className={`fa-solid fa-play pl-0.5 text-[0.6rem] ${accent.text}`} aria-hidden="true" />
+          <Icon name="play" size={11} className={`ml-0.5 ${accent.text}`} />
         </span>
       </div>
       <div className="h-1.5 overflow-hidden rounded-full bg-white/10">
@@ -187,7 +188,7 @@ function LinkButton({ link }) {
       whileTap={{ scale: 0.97 }}
       className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-surface-elevated px-3.5 py-1.5 text-offwhite/70 hover:text-aqua hover:border-aqua/25 transition-colors duration-200 font-mono text-[0.7rem] uppercase tracking-[0.1em] no-underline"
     >
-      <i className={link.icon} aria-hidden="true" />
+      <Icon name={link.icon} size={14} />
       {link.label}
     </motion.a>
   )
@@ -244,9 +245,10 @@ function ProjectCard({ project, index, featured = false, portfolioKey }) {
               className="no-underline text-inherit transition-colors duration-200 group-hover:text-cyan"
             >
               {project.title}
-              <i
-                className="fa-solid fa-arrow-right ml-2 text-sm text-offwhite/40 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-cyan"
-                aria-hidden="true"
+              <Icon
+                name="arrow-right"
+                size={16}
+                className="ml-2 text-offwhite/40 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-cyan"
               />
             </a>
           </h3>

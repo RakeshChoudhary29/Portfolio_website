@@ -10,6 +10,8 @@ function EducationCard({ item, index }) {
           <img
             src={item.logo}
             alt={item.logoAlt}
+            width={78}
+            height={78}
             className="max-h-full max-w-full object-contain"
             loading="lazy"
           />
@@ -22,7 +24,7 @@ function EducationCard({ item, index }) {
         </h3>
         <p className="text-offwhite/70 mt-2 leading-7 text-sm sm:text-base">{item.degree}</p>
 
-        <div className="mt-5 pt-4 border-t border-white/8 flex items-center justify-between gap-4 flex-wrap">
+        <div className="mt-5 pt-4 border-t border-white/8 flex items-center gap-3 flex-wrap">
           <p className="text-offwhite/50 text-xs sm:text-sm uppercase tracking-[0.1em]">
             Academic Performance
           </p>

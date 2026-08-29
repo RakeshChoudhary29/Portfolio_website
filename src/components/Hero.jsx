@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import Icon from './ui/Icon'
 import MagneticButton from './ui/MagneticButton'
 import TiltCard from './ui/TiltCard'
 import RotatingText from './ui/RotatingText'
@@ -70,7 +71,7 @@ export default function Hero({ data }) {
               className="cta-glow bg-cyan text-black hover:bg-cyan/90 font-mono px-6 sm:px-7 py-2.5 sm:py-3 rounded-full no-underline text-sm sm:text-base font-semibold"
             >
               View Projects
-              <i className="fa-solid fa-arrow-right ml-2 text-sm" aria-hidden="true" />
+              <Icon name="arrow-right" size={16} className="ml-2" />
             </MagneticButton>
             <motion.a
               href="#contact"
@@ -106,10 +107,7 @@ export default function Hero({ data }) {
           <div className="flex items-center gap-3">
             <TiltCard>
               <div className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-surface-elevated p-2 border border-white/10">
-                <i
-                  className={`${data.card.icon} text-aqua text-lg sm:text-xl`}
-                  aria-hidden="true"
-                />
+                <Icon name={data.card.icon} size={22} className="text-aqua" />
               </div>
             </TiltCard>
             <p className="flex items-center gap-2 font-mono text-[0.7rem] sm:text-xs uppercase tracking-[0.14em] text-aqua/80">
@@ -148,7 +146,7 @@ export default function Hero({ data }) {
         transition={{ delay: 0.9, duration: 0.5 }}
       >
         <span className="font-mono text-[0.7rem] uppercase tracking-[0.2em]">Scroll</span>
-        <i className="fa-solid fa-chevron-down scroll-cue text-sm" aria-hidden="true" />
+        <Icon name="chevron-down" size={16} className="scroll-cue" />
       </motion.a>
     </section>
   )

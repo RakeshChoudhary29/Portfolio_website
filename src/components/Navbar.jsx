@@ -3,6 +3,7 @@ import { motion, useScroll, useSpring } from 'framer-motion'
 import { CONTACT_EMAIL, SOCIAL_LINKS, getResumeUrl } from '../constants/site'
 import { getPortfolioOptions } from '../data/portfolios'
 import useActiveSection from '../hooks/useActiveSection'
+import Icon from './ui/Icon'
 
 const navLinks = [
   { label: 'About', href: '#about' },
@@ -15,17 +16,17 @@ const navLinks = [
 const socialLinks = [
   {
     href: SOCIAL_LINKS.linkedin,
-    icon: 'fa-brands fa-linkedin',
+    icon: 'linkedin',
     label: 'LinkedIn',
   },
   {
     href: SOCIAL_LINKS.github,
-    icon: 'fa-brands fa-square-github',
+    icon: 'github',
     label: 'GitHub',
   },
   {
     href: `mailto:${CONTACT_EMAIL}`,
-    icon: 'fa-solid fa-envelope',
+    icon: 'mail',
     label: 'Email',
   },
 ]
@@ -141,9 +142,9 @@ export default function Navbar({ activePortfolioKey }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={link.label}
-                  className="text-offwhite/50 hover:text-aqua transition-colors duration-200 text-lg"
+                  className="grid h-9 w-9 place-items-center rounded-md text-offwhite/50 hover:text-aqua transition-colors duration-200"
                 >
-                  <i className={link.icon} aria-hidden="true" />
+                  <Icon name={link.icon} size={18} />
                   <span className="sr-only">{link.label}</span>
                 </a>
               </li>
@@ -154,7 +155,7 @@ export default function Navbar({ activePortfolioKey }) {
                 href={resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="cta-glow cta-glow-magenta bg-magenta hover:bg-hotmag text-white font-mono px-4 py-2 rounded-lg transition-colors duration-200 no-underline inline-block text-sm"
+                className="cta-glow cta-glow-magenta bg-hotmag hover:bg-magenta text-black font-semibold font-mono px-4 py-2 rounded-lg transition-colors duration-200 no-underline inline-block text-sm"
               >
                 Resume
               </a>
@@ -164,12 +165,12 @@ export default function Navbar({ activePortfolioKey }) {
 
         <button
           type="button"
-          className="lg:hidden text-aqua text-2xl rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-aqua focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+          className="lg:hidden -mr-2 flex h-11 w-11 items-center justify-center rounded-md text-aqua focus:outline-none focus-visible:ring-2 focus-visible:ring-aqua focus-visible:ring-offset-2 focus-visible:ring-offset-black"
           onClick={() => setMenuOpen((prev) => !prev)}
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
         >
-          <i className={menuOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'} />
+          <Icon name={menuOpen ? 'x' : 'menu'} size={22} />
         </button>
       </nav>
 
@@ -221,7 +222,7 @@ export default function Navbar({ activePortfolioKey }) {
                   className="text-offwhite/50 hover:text-aqua transition-colors duration-200"
                   onClick={closeMenu}
                 >
-                  <i className={link.icon} aria-hidden="true" />
+                  <Icon name={link.icon} size={18} />
                   <span className="sr-only">{link.label}</span>
                 </a>
               ))}
@@ -231,7 +232,7 @@ export default function Navbar({ activePortfolioKey }) {
                 href={resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-magenta hover:bg-hotmag text-white font-mono px-4 py-2 rounded-lg transition-colors duration-200 inline-block no-underline text-sm"
+                className="bg-hotmag hover:bg-magenta text-black font-semibold font-mono px-4 py-2 rounded-lg transition-colors duration-200 inline-block no-underline text-sm"
                 onClick={closeMenu}
               >
                 Resume

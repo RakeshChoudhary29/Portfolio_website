@@ -7,7 +7,7 @@ export const SITE_URL = 'https://rakeshchoudhary.dev'
 export const SITE_NAME = 'Rakesh Choudhary'
 export const AUTHOR_NAME = 'Rakesh Choudhary'
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-banner.png`
-export const CONTACT_EMAIL = 'rakeshtheone29@gmail.com'
+export const CONTACT_EMAIL = 'hi.rakeshchoudhary@gmail.com'
 export const SOCIAL_LINKS = {
   github: 'https://github.com/RakeshChoudhary29',
   linkedin: 'https://www.linkedin.com/in/rakeshchoudhary29/',

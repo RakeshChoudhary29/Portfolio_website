@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import Icon from './ui/Icon'
 
 // Web3Forms access keys are public by design (tied to a recipient email),
 // so shipping it in the client bundle is safe. Without a key the whole
@@ -122,12 +123,12 @@ export default function ContactForm() {
       >
         {status === 'sending' ? (
           <>
-            <i className="fa-solid fa-circle-notch fa-spin mr-2" aria-hidden="true" />
+            <Icon name="loader" size={16} className="mr-2 animate-spin" />
             Sending…
           </>
         ) : (
           <>
-            <i className="fa-solid fa-paper-plane mr-2" aria-hidden="true" />
+            <Icon name="send" size={16} className="mr-2" />
             Send Message
           </>
         )}
@@ -136,13 +137,13 @@ export default function ContactForm() {
       <div role="status" aria-live="polite" className="min-h-[1.25rem] text-sm">
         {status === 'success' && (
           <p className="text-aqua">
-            <i className="fa-solid fa-circle-check mr-2" aria-hidden="true" />
+            <Icon name="circle-check" size={16} className="mr-2" />
             Message sent — I&apos;ll get back to you soon.
           </p>
         )}
         {status === 'error' && (
           <p className="text-hotmag">
-            <i className="fa-solid fa-circle-exclamation mr-2" aria-hidden="true" />
+            <Icon name="circle-alert" size={16} className="mr-2" />
             Something went wrong. Please email me directly instead.
           </p>
         )}

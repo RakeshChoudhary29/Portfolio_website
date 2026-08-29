@@ -8,7 +8,7 @@ html {
 
 /* Anchor targets stop below the sticky navbar instead of underneath it */
 section[id] {
-  scroll-margin-top: 4.5rem;
+  scroll-margin-top: 5.5rem;
 }
 
 *,

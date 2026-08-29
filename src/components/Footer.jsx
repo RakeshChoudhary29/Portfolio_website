@@ -1,19 +1,20 @@
 import { CONTACT_EMAIL, SOCIAL_LINKS } from '../constants/site'
+import Icon from './ui/Icon'
 
 const socialLinks = [
   {
     href: SOCIAL_LINKS.linkedin,
-    icon: 'fa-brands fa-linkedin',
+    icon: 'linkedin',
     label: 'LinkedIn',
   },
   {
     href: SOCIAL_LINKS.github,
-    icon: 'fa-brands fa-square-github',
+    icon: 'github',
     label: 'GitHub',
   },
   {
     href: `mailto:${CONTACT_EMAIL}`,
-    icon: 'fa-solid fa-envelope',
+    icon: 'mail',
     label: 'Email',
   },
 ]
@@ -38,7 +39,7 @@ export default function Footer({ subtitle }) {
               aria-label={link.label}
               className="text-offwhite/45 hover:text-aqua transition-colors duration-200"
             >
-              <i className={link.icon} aria-hidden="true" />
+              <Icon name={link.icon} size={18} />
               <span className="sr-only">{link.label}</span>
             </a>
           </li>

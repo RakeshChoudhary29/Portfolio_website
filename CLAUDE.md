@@ -35,7 +35,7 @@ This is a static SPA, so all meta tags are injected at runtime. `buildMetadata(p
 
 - Tailwind with a custom dark theme in `tailwind.config.js`: brand colors (`hotmag`, `magenta`, `aqua`, `cyan`, `plum`, surface tones) and font families (`font-display` = Outfit, `font-sans` = Inter, `font-mono` = Oxygen Mono). Fonts load via Google Fonts in `index.html`.
 - Global custom classes (`gradient-divider`, `section-alt`, `spotlight-card`, etc.) live in `src/index.css` — check there before adding new utility CSS.
-- Reusable interaction components are in `src/components/ui/`: `MagneticButton`, `TiltCard`, `Timeline`/`TimelineItem`, `ScrollToTop`, `CountUp`, `RotatingText`. Shared section building blocks live in `src/components/`: `SectionHeader` (numbered eyebrow + h2 + description; pass the section's 1-based `index`) and `TechChips` (pill tag row).
+- Reusable interaction components are in `src/components/ui/`: `MagneticButton`, `TiltCard`, `Timeline`/`TimelineItem`, `ScrollToTop`, `CountUp`, `RotatingText`. Every icon goes through `ui/Icon.jsx`, which maps a name (`mail`, `github`, `arrow-right`…) to a tree-shaken lucide component — data files name an icon by string. It replaced Font Awesome, so never reintroduce `<i className="fa-…">`; add a glyph to Icon's registry instead. The two brand marks (GitHub, LinkedIn) are inline paths because lucide dropped its brand set. Shared section building blocks live in `src/components/`: `SectionHeader` (numbered eyebrow + h2 + description; pass the section's 1-based `index`) and `TechChips` (pill tag row).
 - Hooks in `src/hooks/`: `useActiveSection` (IntersectionObserver-driven navbar highlighting) and `useSpotlight` (cursor-following radial glow — returns props to spread onto an element with the `.spotlight-card` class; it writes CSS variables straight to the DOM node, so pointer moves never re-render React).
 
 ### Contact form
@@ -55,6 +55,7 @@ This is a static SPA, so all meta tags are injected at runtime. `buildMetadata(p
 
 ### Notes
 
+- Images are pre-sized to their render box and committed optimized (the profile photo is WebP; logos are ~200px PNGs). A 1 MB source PNG for a 78px logo was 40% of the page weight once — resize before committing, and give every `<img>` `width`/`height` so it reserves layout.
 - Static assets served from `public/` (favicons, `og-banner.png`, `sitemap.xml`, `resume/<key>/resume.pdf`); imported image assets live in `src/assets/`. When project ids change, update `public/sitemap.xml` to match.
 - Navigation is driven by the `navLinks` array in `Navbar.jsx`; `sectionIds` derives from it plus `intro` (the hero, observed but deliberately unlinked so no link highlights at the top). Adding a section means adding an `id` on the `<section>`, an entry in `navLinks`; the `section[id]` rule in `index.css` already handles anchor offset.
 - The navbar's portfolio switcher is dev-only (`import.meta.env.DEV`); production visitors reach the AI/ML portfolio only via a direct `?type=aiml` URL.

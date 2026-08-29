@@ -98,7 +98,7 @@ export const portfolioRegistry = {
         'I am a Software Engineer and Full Stack Developer working with React, Next.js, Node.js, and MongoDB to build responsive, user-focused applications with strong performance and practical UI.',
       chips: ['1.5+ years experience', 'MERN Stack', 'Node.js', 'Google Cloud Platform'],
       card: {
-        icon: 'fa-solid fa-terminal',
+        icon: 'terminal',
         eyebrow: 'Currently',
         title: 'SDE-1 @ Monkhub Innovations',
         subtitle: 'Backend & payment systems · Gurugram, India',
@@ -131,19 +131,26 @@ export const portfolioRegistry = {
           items: [
             {
               title: 'Frontend',
-              value: 'React.js | Next.js | TypeScript | Redux Toolkit | Tailwind CSS',
+              items: ['React.js', 'Next.js', 'TypeScript', 'Redux Toolkit', 'Tailwind CSS'],
             },
             {
               title: 'Backend & System Design',
-              value: 'Node.js | Express.js | REST APIs | Socket.io | Microservices | Caching',
+              items: [
+                'Node.js',
+                'Express.js',
+                'REST APIs',
+                'Socket.io',
+                'Microservices',
+                'Caching',
+              ],
             },
             {
               title: 'Databases, Cloud & DevOps',
-              value: 'MongoDB | MySQL | Redis | Docker | CI/CD | GCP | AWS',
+              items: ['MongoDB', 'MySQL', 'Redis', 'Docker', 'CI/CD', 'GCP', 'AWS'],
             },
             {
               title: 'AI & Integrations',
-              value: 'OpenAI API | LangChain | Gemini | Stripe | Payment Webhooks',
+              items: ['OpenAI API', 'LangChain', 'Gemini', 'Stripe', 'Payment Webhooks'],
             },
           ],
         },
@@ -185,7 +192,7 @@ export const portfolioRegistry = {
         {
           id: 'dms',
           visual: 'stream',
-          label: 'Featured Project',
+          label: 'Streaming Infrastructure',
           title: 'Device Management System (DMS)',
           description:
             'Architected a high-concurrency Node.js streaming pipeline serving live camera feeds from 1000+ transit vehicles. Reverse-engineered proprietary camera network protocols, captured synchronized audio/video through a custom ffmpeg pipeline with in-memory stream buffering for low-latency playback, and shipped the system as Dockerized services on GCP.',
@@ -196,7 +203,7 @@ export const portfolioRegistry = {
         {
           id: 'mnee',
           visual: 'chart',
-          label: 'Featured Project',
+          label: 'Fintech / Blockchain',
           title: 'MNEE - Blockchain Token Platform',
           description:
             'Constructed the backend transaction pipeline for a live blockchain token platform, integrating Fireblocks custody and the 0x API for quote routing across smart-contract tokens. Hardened endpoints with Google reCAPTCHA Enterprise to block automated transaction abuse and secured primary swap pairs with wallet-based authentication.',
@@ -207,7 +214,7 @@ export const portfolioRegistry = {
         {
           id: 'roldrive',
           visual: 'dashboard',
-          label: 'Featured Project',
+          label: 'Realtime Systems',
           title: 'RolDrive Ride Booking',
           description:
             'Designed real-time ride dispatch on Socket.io backed by a geospatial-indexed assignment algorithm that matches drivers to bookings at scale. Built the internal admin platform with JWT/RBAC authorization covering booking, driver, and fleet operations end to end.',
@@ -229,7 +236,7 @@ export const portfolioRegistry = {
         {
           id: 'shortest-path',
           visual: 'graph',
-          label: 'Featured Project',
+          label: 'Algorithms',
           title: 'Shortest Path Visualizer',
           description:
             "Interactive pathfinding visualizer implementing Dijkstra's algorithm on a fully editable graph — add weighted nodes and edges, then watch the algorithm expand its frontier step by step. Written in vanilla JavaScript on HTML Canvas with zero frameworks.",
@@ -237,12 +244,12 @@ export const portfolioRegistry = {
             {
               url: 'https://github.com/RakeshChoudhary29/Shortest-Path',
               label: 'Source Code',
-              icon: 'fa-brands fa-github',
+              icon: 'github',
             },
             {
               url: 'https://shortestpath.rakeshchoudhary.dev/',
               label: 'Live Demo',
-              icon: 'fa-solid fa-arrow-up-right-from-square',
+              icon: 'external-link',
             },
           ],
           techs: ['HTML Canvas', 'CSS', 'JavaScript'],
@@ -285,7 +292,7 @@ export const portfolioRegistry = {
         'I work with modern AI frameworks like LangChain, OpenAI APIs, and automation workflows to build intelligent backend services and data-centric applications.',
       chips: ['AI/LLM Workflows', 'Automation Workflows', 'Data Engineering'],
       card: {
-        icon: 'fa-solid fa-robot',
+        icon: 'robot',
         eyebrow: 'Currently',
         title: 'SDE-1 @ Monkhub Innovations',
         subtitle: 'AI workflows & backend systems · Gurugram, India',
@@ -318,19 +325,19 @@ export const portfolioRegistry = {
           items: [
             {
               title: 'AI / ML & LLMs',
-              value: 'LangChain | OpenAI API | Gemini API | Prompt Engineering',
+              items: ['LangChain', 'OpenAI API', 'Gemini API', 'Prompt Engineering'],
             },
             {
               title: 'Automation & Workflows',
-              value: 'n8n | Telegram Bot API | Webhook Integrations',
+              items: ['n8n', 'Telegram Bot API', 'Webhook Integrations'],
             },
             {
               title: 'Data Engineering',
-              value: 'SQL | MongoDB Pipelines | Redis | Query Optimization',
+              items: ['SQL', 'MongoDB Pipelines', 'Redis', 'Query Optimization'],
             },
             {
               title: 'Programming & Cloud',
-              value: 'Python | JavaScript | AWS (S3, SES, SNS) | Docker',
+              items: ['Python', 'JavaScript', 'AWS (S3, SES, SNS)', 'Docker'],
             },
           ],
         },
@@ -372,7 +379,7 @@ export const portfolioRegistry = {
         {
           id: 'most-ai',
           visual: 'terminal',
-          label: 'Featured Project',
+          label: 'Applied LLM Platform',
           title: 'MOST - Hospitality AI Platform',
           description:
             'Architected an AI recommendation engine with LangChain and OpenAI that powers dynamic, context-aware responses for hospitality workflows. Designed modular NestJS microservices for scalable AI travel pipelines and deployed transactional communication infrastructure on AWS S3, SES, and SNS.',
@@ -402,7 +409,7 @@ export const portfolioRegistry = {
             {
               url: 'https://github.com/RakeshChoudhary29/Titanic',
               label: 'Source Code',
-              icon: 'fa-brands fa-github',
+              icon: 'github',
             },
           ],
           techs: ['Python', 'Pandas', 'Visualization', 'Statistics'],
