@@ -8,6 +8,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run build` — production build to `dist/`
 - `npm run preview` — serve the production build locally
 
+After editing `tailwind.config.js`, restart the dev server — the theme is only read at startup.
+
 There is no test runner, linter, or type-check configured. `.jsx` files are plain React (no TypeScript despite `@types/react` being present).
 
 ## Architecture
@@ -54,4 +56,5 @@ This is a static SPA, so all meta tags are injected at runtime. `buildMetadata(p
 ### Notes
 
 - Static assets served from `public/` (favicons, `og-banner.png`, `sitemap.xml`, `resume/<key>/resume.pdf`); imported image assets live in `src/assets/`. When project ids change, update `public/sitemap.xml` to match.
+- Navigation is driven by the `navLinks` array in `Navbar.jsx`; `sectionIds` derives from it plus `intro` (the hero, observed but deliberately unlinked so no link highlights at the top). Adding a section means adding an `id` on the `<section>`, an entry in `navLinks`; the `section[id]` rule in `index.css` already handles anchor offset.
 - The navbar's portfolio switcher is dev-only (`import.meta.env.DEV`); production visitors reach the AI/ML portfolio only via a direct `?type=aiml` URL.
