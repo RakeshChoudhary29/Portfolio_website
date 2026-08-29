@@ -7,11 +7,12 @@ function EducationCard({ item, index }) {
       <div className="mb-5 md:mb-0">
         <p className="font-mono text-xs sm:text-sm text-aqua mb-3">{item.period}</p>
         <div className="flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-xl bg-white p-2 shadow-sm">
+          {/* No width/height here: the wrapper is a fixed 64/80px box, so it
+              already reserves the space, and the two logos differ in intrinsic
+              size — any single pair of attributes would be a lie. */}
           <img
             src={item.logo}
             alt={item.logoAlt}
-            width={78}
-            height={78}
             className="max-h-full max-w-full object-contain"
             loading="lazy"
           />

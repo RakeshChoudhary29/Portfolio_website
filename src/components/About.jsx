@@ -62,7 +62,7 @@ export default function About({ data }) {
           className="mb-8 md:mb-10"
         />
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,300px)_minmax(0,1fr)] md:grid-rows-[auto_1fr] md:gap-x-12 lg:gap-x-14 md:gap-y-6 content-start">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,300px)_minmax(0,1fr)] md:grid-rows-[auto_1fr] md:gap-x-12 lg:gap-x-14 md:gap-y-6">
           <motion.div
             className="w-full md:col-start-1 md:row-start-1"
             initial={{ opacity: 0, y: 20 }}
@@ -80,31 +80,6 @@ export default function About({ data }) {
                 className="w-full object-cover aspect-[4/5] transition-transform duration-500 ease-out group-hover:scale-105"
                 loading="lazy"
               />
-            </div>
-          </motion.div>
-
-          {/* Snapshot is its own grid child so it can trail the bio on mobile
-              while still stacking under the photo in the left column at md+. */}
-          <motion.div
-            {...snapshotSpotlight}
-            className="spotlight-card rounded-2xl p-5 order-last md:order-none md:col-start-1 md:row-start-2"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-          >
-            <p className="font-mono text-xs uppercase tracking-[0.14em] text-aqua/80">
-              {data.snapshotTitle}
-            </p>
-            <div className="mt-4 space-y-2.5">
-              {data.snapshotItems.map((item) => (
-                <div
-                  key={item}
-                  className="rounded-xl border border-white/8 bg-surface-elevated px-3.5 py-3"
-                >
-                  <p className="text-offwhite font-medium text-sm">{item}</p>
-                </div>
-              ))}
             </div>
           </motion.div>
 
@@ -174,6 +149,36 @@ export default function About({ data }) {
               </motion.div>
             </AnimatePresence>
           </motion.div>
+
+          {/* Last in the DOM so mobile reading order matches what's on screen
+              (photo, bio, snapshot); at md+ the explicit column/row placement —
+              not source order — puts it back under the photo. `self-start` is
+              load-bearing: the text column spans both rows and is much taller
+              than the photo, so without it this card stretches to fill row 2
+              (686px tall at 768px, most of it empty). */}
+          <motion.div
+            {...snapshotSpotlight}
+            className="spotlight-card rounded-2xl p-5 self-start md:col-start-1 md:row-start-2"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+          >
+            <p className="font-mono text-xs uppercase tracking-[0.14em] text-aqua/80">
+              {data.snapshotTitle}
+            </p>
+            <div className="mt-4 space-y-2.5">
+              {data.snapshotItems.map((item) => (
+                <div
+                  key={item}
+                  className="rounded-xl border border-white/8 bg-surface-elevated px-3.5 py-3"
+                >
+                  <p className="text-offwhite font-medium text-sm">{item}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
         </div>
       </div>
     </section>

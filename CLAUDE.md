@@ -55,7 +55,7 @@ This is a static SPA, so all meta tags are injected at runtime. `buildMetadata(p
 
 ### Notes
 
-- Images are pre-sized to their render box and committed optimized (the profile photo is WebP; logos are ~200px PNGs). A 1 MB source PNG for a 78px logo was 40% of the page weight once — resize before committing, and give every `<img>` `width`/`height` so it reserves layout.
+- Images are pre-sized to their render box and committed optimized (the profile photo is WebP; logos are ~200px PNGs). A 1 MB source PNG for a 78px logo was 40% of the page weight once — resize before committing, and give an `<img>` `width`/`height` so it reserves layout unless a fixed-size wrapper already does (the education logos).
 - Static assets served from `public/` (favicons, `og-banner.png`, `sitemap.xml`, `resume/<key>/resume.pdf`); imported image assets live in `src/assets/`. When project ids change, update `public/sitemap.xml` to match.
 - Navigation is driven by the `navLinks` array in `Navbar.jsx`; `sectionIds` derives from it plus `intro` (the hero, observed but deliberately unlinked so no link highlights at the top). Adding a section means adding an `id` on the `<section>`, an entry in `navLinks`; the `section[id]` rule in `index.css` already handles anchor offset.
 - The navbar's portfolio switcher is dev-only (`import.meta.env.DEV`); production visitors reach the AI/ML portfolio only via a direct `?type=aiml` URL.

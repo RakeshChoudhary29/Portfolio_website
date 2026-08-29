@@ -76,7 +76,13 @@ const icons = {
 
 export default function Icon({ name, size = 16, className = '', ...rest }) {
   const Glyph = icons[name]
-  if (!Glyph) return null
+
+  if (!Glyph) {
+    // Names come from data files (portfolios.js), so a typo would otherwise
+    // leave a silent hole where an icon should be.
+    if (import.meta.env.DEV) console.warn(`Icon: no glyph named "${name}"`)
+    return null
+  }
 
   return (
     <Glyph
